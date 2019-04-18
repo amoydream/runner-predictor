@@ -2,8 +2,7 @@ PROJECT_DIR_NAME:=management_django_service
 ENTER_DJANGO:=docker-compose exec djangoweb
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
-	@$(MAKE) clean-py || printf "\n\033[33mWasn't able to execute clean-py, maybe some file permissions issue! But build anyway.\033[0m\n\n"
-	docker-compose build --build-arg DJANGO_USER_UID=$(DJANGO_USER_UID)
+	docker-compose build
 
 run: ## start containers with docker-compose and attach to logs
 	docker-compose up --no-build
