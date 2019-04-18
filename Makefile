@@ -1,4 +1,4 @@
-PROJECT_DIR_NAME:=data_management_django_service
+PROJECT_DIR_NAME:=management_django_service
 ENTER_DJANGO:=docker-compose exec djangoweb
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)

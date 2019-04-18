@@ -1,5 +1,9 @@
-Django>=2.2
-psycopg2>=2.7,<3.0
-djangorestframework<4
-pytest
-pytest-django
+Django>=2.2,<2.3
+djangorestframework>=3.9.2,<3.10.0
+
+psycopg2>=2.8.2,<2.9.0
+
+
+flake8>=3.7.7,<3.8.0
+pytest>=4.4.1,<4.5.0
+pytest-django>=3.4.8,<3.5.0
