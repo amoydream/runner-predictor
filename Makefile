@@ -1,5 +1,5 @@
 PROJECT_DIR_NAME:=management_django_service
-ENTER_DJANGO:=docker-compose exec djangoweb
+ENTER_DJANGO:=docker-compose run djangoweb
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
 	docker-compose build
@@ -18,6 +18,10 @@ enter: ## enter the Django container (want to play freely with manage.py command
 
 test:
 	$(ENTER_DJANGO) pytest -v -m "not webtest"
+
+flake:
+	$(ENTER_DJANGO) flake8
+
 
 test_all:	
 	$(ENTER_DJANGO) pytest -v
