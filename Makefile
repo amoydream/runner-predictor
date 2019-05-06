@@ -1,5 +1,6 @@
 PROJECT_DIR_NAME:=management_django_service
 ENTER_DJANGO:=docker-compose exec djangoweb
+ENTER_RESULTS:=docker-compose exec resultapi
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
 	docker-compose build
@@ -16,9 +17,17 @@ stop: ## stop all running containers for this project
 enter: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_DJANGO) sh
 
+enter_results: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
+	$(ENTER_RESULTS) sh
+
+
 test:
 	#$(ENTER_DJANGO) pytest -v -m "not webtest" && flake8
 	$(ENTER_DJANGO) sh -c "python manage.py test && flake8"
+
+test_results:
+	#$(ENTER_DJANGO) pytest -v -m "not webtest" && flake8
+	$(ENTER_RESULTS) sh -c "python manage.py test && flake8"
 
 flake:
 	$(ENTER_DJANGO) flake8
