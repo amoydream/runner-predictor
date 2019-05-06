@@ -29,6 +29,9 @@ test_results:
 	#$(ENTER_DJANGO) pytest -v -m "not webtest" && flake8
 	$(ENTER_RESULTS) sh -c "python manage.py test && flake8"
 
+db_results:
+	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results
+
 flake:
 	$(ENTER_DJANGO) flake8
 
