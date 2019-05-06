@@ -1,17 +1,18 @@
 from django.db import models
-from django.core.validators import MinValueValidator
 
 
 class Race(models.Model):
-    name = models.CharField(max_length=256, blank=True)
-    start_date = models.DateField(null=True)
-    distance = models.DecimalField(max_digits=10, decimal_places=1, null=True)
-    elevation_gain = models.IntegerField(null=True)
-    elevation_lost = models.IntegerField(null=True)
-    itra = models.IntegerField(null=True)
-    food_point = models.IntegerField(null=True)
+    name = models.CharField(max_length=256)
+    start_date = models.DateField(null=True, blank=True)
+    distance = models.DecimalField(
+        max_digits=10, decimal_places=1, null=True, blank=True
+    )
+    elevation_gain = models.PositiveIntegerField(null=True, blank=True)
+    elevation_lost = models.PositiveIntegerField(null=True, blank=True)
+    itra = models.PositiveIntegerField(null=True, blank=True)
+    food_point = models.PositiveIntegerField(null=True, blank=True)
     time_limit = models.DecimalField(
-        max_digits=10, decimal_places=1, null=True
+        max_digits=10, decimal_places=1, null=True, blank=True
     )
 
     def __str__(self):
