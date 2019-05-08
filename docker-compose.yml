@@ -20,14 +20,23 @@ services:
     restart: on-failure  
     depends_on:
       - db
-  
+  itrafetcher:
+    build: ./itra-results-fetcher-service
+    command: >
+        sh -c "flask run --host=0.0.0.0"
+    volumes:
+      - ./itra-results-fetcher-service:/flask_code
+    ports:
+      - 5000:5000  
+
+
   resultapi:
-    build: ./race-results-service
+    build: ./race-service
     command: >
         sh -c "python manage.py migrate &&
                python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./race-results-service:/django_code
+      - ./race-service:/django_code
     ports:
       - "8001:8000"
     environment: 
