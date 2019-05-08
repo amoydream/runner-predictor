@@ -26,4 +26,6 @@ class Race(models.Model):
     @property
     def elevation_diff(self):
         """Calculating difference between elevation gain and lost"""
+        if not self.elevation_gain or not self.elevation_lost:
+            return None
         return self.elevation_gain - self.elevation_lost
