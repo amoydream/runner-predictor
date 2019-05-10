@@ -27,7 +27,12 @@ services:
     volumes:
       - ./itra-results-fetcher-service:/flask_code
     ports:
-      - 5000:5000  
+      - 5000:5000
+  
+  itra_redis_cache:
+    image: redis
+    expose:
+      - 6379      
 
 
   resultapi:

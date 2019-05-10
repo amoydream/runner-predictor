@@ -10,6 +10,10 @@ class RaceResult:
         self.rank = kwargs.get("rank")
         self.sex = kwargs.get("sex")
         self.nationality = kwargs.get("nationality")
+        self.birth_year = kwargs.get("birth_year")
+
+    def __str__(self):
+        return f"{self.name}, {self.birth_year}, {self.time}"
 
     @property
     def name(self):
@@ -29,11 +33,9 @@ class RaceResult:
     def time(self, d):
         if not d:
             raise ValueError("Time cannot be empty")
-
         time_numbers = [int(n) for n in d.split(":") if n.isdigit()]
         if not len(time_numbers) == 3:
             raise ValueError("Time format is wrong")
-
         self._time = timedelta(
             hours=time_numbers[0],
             minutes=time_numbers[1],

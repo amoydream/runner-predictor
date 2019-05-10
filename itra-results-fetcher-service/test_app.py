@@ -5,7 +5,7 @@ import json
 from unittest.mock import patch
 
 from app import app
-from itra_fetcher import ItraFetcher
+from itra_fetcher import ItraFetcher, ItraRunnerFetcher
 from race_result import RaceResult
 
 
@@ -23,12 +23,15 @@ def test_sample_post(client):
     assert b"1929" in rv.data
 
 
-@patch("itra_fetcher.requests.post")
-def test_fetcher_parser_results(mocker, html_itra_results):
+@patch("itra_fetcher.ItraRunnerFetcher.download_data")
+@patch("itra_fetcher.ItraFetcher.download_data")
+def test_fetcher_parser_results(
+    mocker, mocker_runner, html_itra_results, html_itra_runner_results
+):
     # print(html_itra_results)
-    fetcher = ItraFetcher("getCourse", itra_race_id=32181)
-    mock_return = mocker.return_value
-    mock_return.text = html_itra_results
+    fetcher = ItraFetcher(itra_race_id=32181)
+    mocker.return_value = html_itra_results
+    mocker_runner.return_value = html_itra_runner_results
     fetcher.fetch_results()
     assert len(fetcher.results) == 4
     race_result = fetcher.results[0]
@@ -36,9 +39,52 @@ def test_fetcher_parser_results(mocker, html_itra_results):
     assert race_result.name == "Karolina Romanowicz"
     assert race_result.sex == "w"
     assert race_result.nationality == "Pologne"
+    assert race_result.birth_year == 1989
+
+
+@patch("itra_fetcher.requests.post")
+def test_fetcher_itra_runner_with_doubled(
+    mocker, html_itra_runner_results_with_doubled
+):
+    """Some times runner is doubled with the same year"""
+    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    mock_return = mocker.return_value
+    mock_return.text = html_itra_runner_results_with_doubled
+    assert fetcher.fetch_year() == 1983
+
+
+@patch("itra_fetcher.requests.post")
+def test_fetcher_itra_runner_with_wrong_year(
+    mocker, html_itra_runner_results_with_one_wrong
+):
+    """Some times runner is doubled and have strange birth year"""
+    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    mock_return = mocker.return_value
+    mock_return.text = html_itra_runner_results_with_one_wrong
+    assert fetcher.fetch_year() == 1983
+
+
+@patch("itra_fetcher.requests.post")
+def test_fetcher_itra_runner_results_same_name_diffent_year(
+    mocker, html_itra_runner_results_same_name_diffent_year
+):
+    """When found runners with same name and diffrent year dont assing birth"""
+    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    mock_return = mocker.return_value
+    mock_return.text = html_itra_runner_results_same_name_diffent_year
+    assert fetcher.fetch_year() is None
+
+
+@patch("itra_fetcher.requests.post")
+def test_fetcher_itra_runner(mocker, html_itra_runner_results):
+    fetcher = ItraRunnerFetcher("Karolina Romanowicz")
+    mock_return = mocker.return_value
+    mock_return.text = html_itra_runner_results
+    assert fetcher.fetch_year() == 1989
 
 
 def test_extract_data_from_row(sample_html_row):
+    """Testing extract_data_from_row method"""
     extracted_data = ItraFetcher.extract_data_from_row(sample_html_row)
     assert extracted_data["name"] == "Karolina ROMANOWICZ"
     assert extracted_data["time"] == "03:41:46"
@@ -48,6 +94,7 @@ def test_extract_data_from_row(sample_html_row):
 
 
 def test_creating_race_result():
+    """Test Creating RaceResult from dictionary"""
     name = "Karolina ROMANOWICZ"
     time = "03:41:46"
     rank = "113"
@@ -115,6 +162,81 @@ def sample_html_row():
                     <td class="c">Woman</td>
                     <td>Pologne</td>
                 </tr>"""
+
+
+@pytest.fixture
+def html_itra_runner_results():
+    return """
+    <div class="fc" id="run2408175"  data-url="/community/karolina.romanowicz/2408175//" >
+        <div class="tit">Women, born in 1989</div>
+            <div class="info">Karolina ROMANOWICZ<br/><span>(POL)</span>
+        </div>
+    </div>"""
+
+
+@pytest.fixture
+def html_itra_runner_results_with_one_wrong():
+    """Some runner have wrong birth year"""
+    return """
+        <div class="fc" id="run407546"  data-url="/community/lukasz.adamczyk/407546//" >
+            <div class="tit">Men, born in ??</div>
+            <div class="info">Lukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+        <div class="fc" id="run711990"  data-url="/community/lukasz.adamczyk/711990//" >
+            <div class="tit">Men, born in 1983</div>
+            <div class="info">Łukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+"""
+
+
+@pytest.fixture
+def html_itra_runner_results_with_doubled():
+    """Some runner have wrong birth year"""
+    return """
+        <div class="fc" id="run407546"  data-url="/community/lukasz.adamczyk/407546//" >
+            <div class="tit">Men, born in 1983</div>
+            <div class="info">Lukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+        <div class="fc" id="run711990"  data-url="/community/lukasz.adamczyk/711990//" >
+            <div class="tit">Men, born in 1983</div>
+            <div class="info">Łukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+
+"""
+
+
+@pytest.fixture
+def html_itra_runner_results_same_name_diffent_year():
+    """Some runner have wrong birth year"""
+    return """
+        <div class="fc" id="run407546"  data-url="/community/lukasz.adamczyk/407546//" >
+            <div class="tit">Men, born in 1982</div>
+            <div class="info">Lukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+        <div class="fc" id="run711990"  data-url="/community/lukasz.adamczyk/711990//" >
+            <div class="tit">Men, born in 1983</div>
+            <div class="info">Łukasz ADAMCZYK
+                <br/>
+                <span>(POL)</span>
+            </div>
+        </div>
+
+"""
 
 
 @pytest.fixture
