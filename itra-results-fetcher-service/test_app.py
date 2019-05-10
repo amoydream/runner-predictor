@@ -53,33 +53,39 @@ def test_fetcher_itra_runner_with_doubled(
     assert fetcher.fetch_year() == 1983
 
 
+@patch("itra_fetcher.red.get")
 @patch("itra_fetcher.requests.post")
 def test_fetcher_itra_runner_with_wrong_year(
-    mocker, html_itra_runner_results_with_one_wrong
+    mocker, mocker_redis, html_itra_runner_results_with_one_wrong
 ):
     """Some times runner is doubled and have strange birth year"""
     fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_with_one_wrong
+    mocker_redis.return_value = None
     assert fetcher.fetch_year() == 1983
 
 
+@patch("itra_fetcher.red.get")
 @patch("itra_fetcher.requests.post")
 def test_fetcher_itra_runner_results_same_name_diffent_year(
-    mocker, html_itra_runner_results_same_name_diffent_year
+    mocker, mocker_redis, html_itra_runner_results_same_name_diffent_year
 ):
     """When found runners with same name and diffrent year dont assing birth"""
     fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_same_name_diffent_year
+    mocker_redis.return_value = None
     assert fetcher.fetch_year() is None
 
 
+@patch("itra_fetcher.red.get")
 @patch("itra_fetcher.requests.post")
-def test_fetcher_itra_runner(mocker, html_itra_runner_results):
+def test_fetcher_itra_runner(mocker, mocker_redis, html_itra_runner_results):
     fetcher = ItraRunnerFetcher("Karolina Romanowicz")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results
+    mocker_redis.return_value = None
     assert fetcher.fetch_year() == 1989
 
 

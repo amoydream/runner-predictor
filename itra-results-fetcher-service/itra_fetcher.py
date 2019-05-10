@@ -21,7 +21,7 @@ class ItraFetcher:
             data = self.extract_data_from_row(tr)
             race_result = RaceResult(**data)
             race_result.birth_year = ItraRunnerFetcher(
-                race_result.name
+                race_result.name, itra_race_id=self.itra_race_id
             ).fetch_year()
             self.results.append(race_result)
 
@@ -52,13 +52,21 @@ class ItraFetcher:
 class ItraRunnerFetcher:
     def __init__(self, name, **kwargs):
         self.name = name
+        self.itra_race_id = kwargs.get("itra_race_id", None)
 
     def fetch_year(self):
+        year_from_redis = red.get(f"{self.itra_race_id}:{self.name}")
+        if year_from_redis:
+            if year_from_redis.decode("utf-8") == "None":
+                return None
+            return int(year_from_redis.decode("utf-8"))
+
         raw_data = self.download_data()
         soup = BeautifulSoup(raw_data, "html.parser")
         # breakpoint()
         year = self.extract_year(soup.select(".tit"))
 
+        red.set(f"{self.itra_race_id}:{self.name}", str(year))
         return year
 
     def download_data(self):
@@ -88,3 +96,4 @@ class ItraRunnerFetcher:
         if len(years) > 1:
             return None
         return list(years)[0]
+
