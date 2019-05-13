@@ -5,7 +5,7 @@ import json
 from unittest.mock import patch
 
 from app import app
-from itra_fetcher import ItraFetcher, ItraRunnerFetcher
+from itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
 from race_result import RaceResult
 
 
@@ -23,13 +23,13 @@ def test_sample_post(client):
     assert b"1929" in rv.data
 
 
-@patch("itra_fetcher.ItraRunnerFetcher.download_data")
-@patch("itra_fetcher.ItraFetcher.download_data")
+@patch("itra_fetcher.ItraRunnerYearFetcher.download_data")
+@patch("itra_fetcher.ItraRaceResultsFetcher.download_data")
 def test_fetcher_parser_results(
     mocker, mocker_runner, html_itra_results, html_itra_runner_results
 ):
     # print(html_itra_results)
-    fetcher = ItraFetcher(itra_race_id=32181)
+    fetcher = ItraRaceResultsFetcher(itra_race_id=32181)
     mocker.return_value = html_itra_results
     mocker_runner.return_value = html_itra_runner_results
     fetcher.fetch_results()
@@ -42,14 +42,16 @@ def test_fetcher_parser_results(
     assert race_result.birth_year == 1989
 
 
+@patch("itra_fetcher.red.get")
 @patch("itra_fetcher.requests.post")
 def test_fetcher_itra_runner_with_doubled(
-    mocker, html_itra_runner_results_with_doubled
+    mocker, mocker_redis, html_itra_runner_results_with_doubled
 ):
     """Some times runner is doubled with the same year"""
-    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    fetcher = ItraRunnerYearFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_with_doubled
+    mocker_redis.return_value = None
     assert fetcher.fetch_year() == 1983
 
 
@@ -59,7 +61,7 @@ def test_fetcher_itra_runner_with_wrong_year(
     mocker, mocker_redis, html_itra_runner_results_with_one_wrong
 ):
     """Some times runner is doubled and have strange birth year"""
-    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    fetcher = ItraRunnerYearFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_with_one_wrong
     mocker_redis.return_value = None
@@ -72,7 +74,7 @@ def test_fetcher_itra_runner_results_same_name_diffent_year(
     mocker, mocker_redis, html_itra_runner_results_same_name_diffent_year
 ):
     """When found runners with same name and diffrent year dont assing birth"""
-    fetcher = ItraRunnerFetcher("Łukasz Adamczyk")
+    fetcher = ItraRunnerYearFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_same_name_diffent_year
     mocker_redis.return_value = None
@@ -82,7 +84,7 @@ def test_fetcher_itra_runner_results_same_name_diffent_year(
 @patch("itra_fetcher.red.get")
 @patch("itra_fetcher.requests.post")
 def test_fetcher_itra_runner(mocker, mocker_redis, html_itra_runner_results):
-    fetcher = ItraRunnerFetcher("Karolina Romanowicz")
+    fetcher = ItraRunnerYearFetcher("Karolina Romanowicz")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results
     mocker_redis.return_value = None
@@ -91,7 +93,9 @@ def test_fetcher_itra_runner(mocker, mocker_redis, html_itra_runner_results):
 
 def test_extract_data_from_row(sample_html_row):
     """Testing extract_data_from_row method"""
-    extracted_data = ItraFetcher.extract_data_from_row(sample_html_row)
+    extracted_data = ItraRaceResultsFetcher.extract_data_from_row(
+        sample_html_row
+    )
     assert extracted_data["name"] == "Karolina ROMANOWICZ"
     assert extracted_data["time"] == "03:41:46"
     assert extracted_data["sex"] == "Woman"
@@ -177,7 +181,7 @@ def html_itra_runner_results():
         <div class="tit">Women, born in 1989</div>
             <div class="info">Karolina ROMANOWICZ<br/><span>(POL)</span>
         </div>
-    </div>"""
+    </div>"""  # noqa: E501
 
 
 @pytest.fixture
@@ -198,7 +202,7 @@ def html_itra_runner_results_with_one_wrong():
                 <span>(POL)</span>
             </div>
         </div>
-"""
+"""  # noqa: E501
 
 
 @pytest.fixture
@@ -220,7 +224,7 @@ def html_itra_runner_results_with_doubled():
             </div>
         </div>
 
-"""
+"""  # noqa: E501
 
 
 @pytest.fixture
@@ -242,12 +246,12 @@ def html_itra_runner_results_same_name_diffent_year():
             </div>
         </div>
 
-"""
+"""  # noqa: E501
 
 
 @pytest.fixture
 def html_itra_results():
-    return """		
+    return """
         <h2>Lemkowyna Ultra-Trail® 2018 - Łemko Trail</h2>
         <table class="palmares" >
             <thead>
@@ -288,9 +292,5 @@ def html_itra_results():
                     <td class="c">Man</td>
                     <td>Pologne</td>
                 </tr>
-                          
-             
-           
-            
                 </tbody>
             </table> """

@@ -8,7 +8,7 @@ from race_result import RaceResult
 red = redis.Redis(host="itra_redis_cache", port=6379, db=0)
 
 
-class ItraFetcher:
+class ItraRaceResultsFetcher:
     def __init__(self, **kwargs):
         self.results = []
         self.itra_race_id = kwargs.get("itra_race_id", None)
@@ -20,7 +20,7 @@ class ItraFetcher:
         for tr in trs:
             data = self.extract_data_from_row(tr)
             race_result = RaceResult(**data)
-            race_result.birth_year = ItraRunnerFetcher(
+            race_result.birth_year = ItraRunnerYearFetcher(
                 race_result.name, itra_race_id=self.itra_race_id
             ).fetch_year()
             self.results.append(race_result)
@@ -49,13 +49,14 @@ class ItraFetcher:
         return d
 
 
-class ItraRunnerFetcher:
+class ItraRunnerYearFetcher:
     def __init__(self, name, **kwargs):
         self.name = name
         self.itra_race_id = kwargs.get("itra_race_id", None)
 
     def fetch_year(self):
-        year_from_redis = red.get(f"{self.itra_race_id}:{self.name}")
+        year_cache_key = f"itra_race:{self.itra_race_id}:{self.name}"
+        year_from_redis = red.get(year_cache_key)
         if year_from_redis:
             if year_from_redis.decode("utf-8") == "None":
                 return None
@@ -63,10 +64,10 @@ class ItraRunnerFetcher:
 
         raw_data = self.download_data()
         soup = BeautifulSoup(raw_data, "html.parser")
-        # breakpoint()
+
         year = self.extract_year(soup.select(".tit"))
 
-        red.set(f"{self.itra_race_id}:{self.name}", str(year))
+        red.set(year_cache_key, str(year))
         return year
 
     def download_data(self):
@@ -96,4 +97,3 @@ class ItraRunnerFetcher:
         if len(years) > 1:
             return None
         return list(years)[0]
-
