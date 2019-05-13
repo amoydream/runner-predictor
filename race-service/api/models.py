@@ -5,7 +5,7 @@ class Race(models.Model):
     name = models.CharField(max_length=256)
     start_date = models.DateField()
     distance = models.DecimalField(
-        max_digits=10, decimal_places=1, null=True, blank=True
+        max_digits=6, decimal_places=2, null=True, blank=True
     )
     elevation_gain = models.PositiveIntegerField(null=True, blank=True)
     elevation_lost = models.PositiveIntegerField(null=True, blank=True)
