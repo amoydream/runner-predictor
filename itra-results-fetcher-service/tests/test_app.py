@@ -171,4 +171,3 @@ def test_required_sex_format():
         name="Test name", time="39:39:39", rank="232", sex=None
     )
     assert race_result.sex is None
-

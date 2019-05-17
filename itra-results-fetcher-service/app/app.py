@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_restful import Api, Resource
 from flask_celery import make_celery
 from .itra_fetcher import ItraRaceResultsFetcher
