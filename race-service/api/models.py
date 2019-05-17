@@ -29,3 +29,19 @@ class Race(models.Model):
         if not self.elevation_gain or not self.elevation_lost:
             return None
         return self.elevation_gain - self.elevation_lost
+
+
+class RaceResult(models.Model):
+    race = models.ForeignKey(
+        Race, on_delete=models.CASCADE, related_name="race_results"
+    )
+    runner_name = models.CharField(max_length=300)
+    runner_birth = models.PositiveIntegerField()
+    time_result = models.DurationField()
+
+    def __str__(self):
+        str_repr = (
+            f"{self.race.name} {self.race.start_date} {self.runner_name}"
+            f" {self.runner_birth} {self.time_result}"
+        )
+        return str_repr

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
-from .factories import RaceFactory
+from .factories import RaceFactory, RaceResultFactory
 
 
 class ModelTest(TestCase):
@@ -48,4 +48,16 @@ class ModelTest(TestCase):
         with self.assertRaises(ValidationError):
             race.full_clean()
 
-    # def test_str_representation_of_race_result(self):
+    def test_str_representation_of_race_result(self):
+        race = RaceFactory()
+        race_result = RaceResultFactory(
+            race=race,
+            runner_name="Michał Mojek",
+            runner_birth=1980,
+            time_result="6:20:45",
+        )
+        self.assertEqual(
+            str(race_result),
+            f"{race.name} {race.start_date} {race_result.runner_name}"
+            f" {race_result.runner_birth} {race_result.time_result}",
+        )

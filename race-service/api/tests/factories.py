@@ -14,3 +14,12 @@ class RaceFactory(factory.DjangoModelFactory):
     itra = 2
     food_point = 3
     time_limit = 9
+
+
+class RaceResultFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = models.RaceResult
+
+    runner_name = "Michał Mojek"
+    runner_birth = 1980
+    time_result = "6:20:45"
