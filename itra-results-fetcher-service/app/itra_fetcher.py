@@ -3,7 +3,7 @@ import requests
 import redis
 
 
-from race_result import RaceResult
+from app.race_result import RaceResult
 
 red = redis.Redis(host="itra_redis_cache", port=6379, db=0)
 
@@ -24,6 +24,7 @@ class ItraRaceResultsFetcher:
                 race_result.name, itra_race_id=self.itra_race_id
             ).fetch_year()
             self.results.append(race_result)
+            print(race_result)
 
     def download_data(self):
 
@@ -71,7 +72,7 @@ class ItraRunnerYearFetcher:
         return year
 
     def download_data(self):
-        print(self.name)
+
         extract_name = self.name.split(" ")
         r = requests.post(
             "https://itra.run/fiche.php",

@@ -1,12 +1,13 @@
 from datetime import timedelta
 import pytest
-import json
+
 
 from unittest.mock import patch
 
-from app import app
-from itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
-from race_result import RaceResult
+
+from app.itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
+from app.race_result import RaceResult
+from app.app import app
 
 
 @pytest.fixture
@@ -16,15 +17,18 @@ def client():
     yield client
 
 
-def test_sample_post(client):
+@patch("app.app.fetch_data_from_itra.delay")
+def test_sample_post(mock, client):
     """Testing sample post"""
-    data = json.dumps(dict(itra_race_id=1929))
-    rv = client.post("/", data=data, content_type="application/json")
-    assert b"1929" in rv.data
+    data = dict(callback_race_id=2, itra_race_id=1929)
+    rv = client.post("/", json=data)
+    json_data = rv.get_json()
+
+    assert json_data == "run que"
 
 
-@patch("itra_fetcher.ItraRunnerYearFetcher.download_data")
-@patch("itra_fetcher.ItraRaceResultsFetcher.download_data")
+@patch("app.itra_fetcher.ItraRunnerYearFetcher.download_data")
+@patch("app.itra_fetcher.ItraRaceResultsFetcher.download_data")
 def test_fetcher_parser_results(
     mocker, mocker_runner, html_itra_results, html_itra_runner_results
 ):
@@ -42,8 +46,8 @@ def test_fetcher_parser_results(
     assert race_result.birth_year == 1989
 
 
-@patch("itra_fetcher.red.get")
-@patch("itra_fetcher.requests.post")
+@patch("app.itra_fetcher.red.get")
+@patch("app.itra_fetcher.requests.post")
 def test_fetcher_itra_runner_with_doubled(
     mocker, mocker_redis, html_itra_runner_results_with_doubled
 ):
@@ -55,8 +59,8 @@ def test_fetcher_itra_runner_with_doubled(
     assert fetcher.fetch_year() == 1983
 
 
-@patch("itra_fetcher.red.get")
-@patch("itra_fetcher.requests.post")
+@patch("app.itra_fetcher.red.get")
+@patch("app.itra_fetcher.requests.post")
 def test_fetcher_itra_runner_with_wrong_year(
     mocker, mocker_redis, html_itra_runner_results_with_one_wrong
 ):
@@ -68,8 +72,8 @@ def test_fetcher_itra_runner_with_wrong_year(
     assert fetcher.fetch_year() == 1983
 
 
-@patch("itra_fetcher.red.get")
-@patch("itra_fetcher.requests.post")
+@patch("app.itra_fetcher.red.get")
+@patch("app.itra_fetcher.requests.post")
 def test_fetcher_itra_runner_results_same_name_diffent_year(
     mocker, mocker_redis, html_itra_runner_results_same_name_diffent_year
 ):
@@ -81,8 +85,8 @@ def test_fetcher_itra_runner_results_same_name_diffent_year(
     assert fetcher.fetch_year() is None
 
 
-@patch("itra_fetcher.red.get")
-@patch("itra_fetcher.requests.post")
+@patch("app.itra_fetcher.red.get")
+@patch("app.itra_fetcher.requests.post")
 def test_fetcher_itra_runner(mocker, mocker_redis, html_itra_runner_results):
     fetcher = ItraRunnerYearFetcher("Karolina Romanowicz")
     mock_return = mocker.return_value
@@ -172,6 +176,18 @@ def sample_html_row():
                     <td class="c">Woman</td>
                     <td>Pologne</td>
                 </tr>"""
+
+
+def html_itra_runner_found_but_there_is_no_year():
+    return """
+    <div class="fc" id="run771669" style="background-image:url(/memb_pic/pic36325_01745c49.jpg);" data-url="/community/lai pui.hui/771669/36325/" >
+        <div class="tit">Women</div>
+            <div class="info">Lai Pui HUI
+                <br/>
+            <span>(HKG)</span>
+        </div>
+    </div>
+    """  # noqa: E501
 
 
 @pytest.fixture
