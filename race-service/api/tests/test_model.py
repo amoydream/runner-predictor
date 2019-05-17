@@ -61,3 +61,29 @@ class ModelTest(TestCase):
             f"{race.name} {race.start_date} {race_result.runner_name}"
             f" {race_result.runner_birth} {race_result.time_result}",
         )
+
+    def test_uniqness_of_the_race_results(self):
+        """Test uniqness of the race results races.
+            race results  with same runner name, birth, time on database"""
+        race = RaceFactory()
+        RaceResultFactory.create(
+            race=race,
+            runner_name="Jan Kowalski",
+            runner_birth=1980,
+            time_result="6:20:45",
+        )
+        RaceResultFactory.create(
+            race=race,
+            runner_name="Jan Kowalski",
+            runner_birth=1981,
+            time_result="6:20:45",
+        )
+
+        with self.assertRaises(IntegrityError):
+            RaceResultFactory.create(
+                race=race,
+                runner_name="Jan Kowalski",
+                runner_birth=1980,
+                time_result="6:20:45",
+            )
+

@@ -81,7 +81,7 @@ class CrudRaceResultTests(TestCase):
 
     def test_retrive_race_results_list(self):
         race = RaceFactory.create()
-        RaceResultFactory.create(race=race)
+        RaceResultFactory.create(race=race, runner_name="Test name")
         RaceResultFactory.create(race=race)
         r_url = reverse("api:race-results-list", args=[race.id])
         res = self.client.get(r_url)

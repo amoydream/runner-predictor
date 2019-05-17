@@ -45,3 +45,13 @@ class RaceResult(models.Model):
             f" {self.runner_birth} {self.time_result}"
         )
         return str_repr
+
+    class Meta:
+        ordering = ["time_result"]
+        verbose_name_plural = "race_results"
+        unique_together = [
+            "race",
+            "runner_name",
+            "runner_birth",
+            "time_result",
+        ]
