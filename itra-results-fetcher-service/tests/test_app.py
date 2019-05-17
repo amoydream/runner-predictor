@@ -9,7 +9,6 @@ from app.itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
 from app.race_result import RaceResult
 
 
-
 @patch("app.app.fetch_data_from_itra.delay")
 def test_sample_post(mock, client):
     """Testing sample post"""
@@ -57,12 +56,26 @@ def test_fetcher_itra_runner_with_doubled(
 def test_fetcher_itra_runner_with_wrong_year(
     mocker, mocker_redis, html_itra_runner_results_with_one_wrong
 ):
-    """Some times runner is doubled and have strange birth year"""
+    """Sometimes runner is doubled and have strange birth year"""
     fetcher = ItraRunnerYearFetcher("Łukasz Adamczyk")
     mock_return = mocker.return_value
     mock_return.text = html_itra_runner_results_with_one_wrong
     mocker_redis.return_value = None
     assert fetcher.fetch_year() == 1983
+
+
+@patch("app.itra_fetcher.red.get")
+@patch("app.itra_fetcher.requests.post")
+def test_fetcher_itra_runner_no_year(
+    mocker, mocker_redis, html_itra_runner_found_but_there_is_no_year
+):
+    """Sometimes there will be a runner, but unfortunately
+    there is no year of birth next to him"""
+    fetcher = ItraRunnerYearFetcher("Łukasz Adamczyk")
+    mock_return = mocker.return_value
+    mock_return.text = html_itra_runner_found_but_there_is_no_year
+    mocker_redis.return_value = None
+    assert fetcher.fetch_year() is None
 
 
 @patch("app.itra_fetcher.red.get")

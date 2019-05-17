@@ -20,6 +20,7 @@ def sample_html_row():
                 </tr>"""
 
 
+@pytest.fixture
 def html_itra_runner_found_but_there_is_no_year():
     return """
     <div class="fc" id="run771669" style="background-image:url(/memb_pic/pic36325_01745c49.jpg);" data-url="/community/lai pui.hui/771669/36325/" >

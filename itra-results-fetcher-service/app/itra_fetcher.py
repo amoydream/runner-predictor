@@ -95,6 +95,6 @@ class ItraRunnerYearFetcher:
             if year.isdigit():
                 years.append(int(year))
         years = set(years)
-        if len(years) > 1:
+        if len(years) > 1 or len(years) == 0:
             return None
         return list(years)[0]
