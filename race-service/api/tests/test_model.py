@@ -86,4 +86,3 @@ class ModelTest(TestCase):
                 runner_birth=1980,
                 time_result="6:20:45",
             )
-
