@@ -13,10 +13,9 @@ WORKDIR /flask_code
 
 COPY . /flask_code/
 
-ENV FLASK_APP /flask_code/app.py
+ENV FLASK_APP /flask_code/app/app.py
 ENV FLASK_ENV=development
-ENV CELERY_BROKER_URL='redis://localhost:6379',
-ENV CELERY_RESULT_BACKEND='redis://localhost:6379'
+
 RUN adduser -D user
 USER user
 
