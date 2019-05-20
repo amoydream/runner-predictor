@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 from app.itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
 from app.race_result import RaceResult
+from app.intra_result_sender import ItraResultSender
 
 
 @patch("app.app.fetch_data_from_itra.delay")
@@ -171,3 +172,20 @@ def test_required_sex_format():
         name="Test name", time="39:39:39", rank="232", sex=None
     )
     assert race_result.sex is None
+
+
+@patch("app.itra_result_sender.requests.post")
+def test_sendig_results_to_race_service(mock):
+    """Testing simple api to sending requsts to race-service"""
+    race_result1 = RaceResult(
+        name="Test name", time="39:39:39", sex="m", birth_year=1980, rank="2"
+    )
+    race_result2 = RaceResult(
+        name="Test name 2", time="39:09:39", sex="w", birth_year=1981, rank="1"
+    )
+    race_results = [race_result1, race_result2]
+    callback_race_id = 1
+    sender = ItraResultSender(race_results, callback_race_id)
+    sender.send_to_race_service()
+
+    assert sender.sended

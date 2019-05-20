@@ -1,5 +1,7 @@
 from celery import Celery
 
+# TODO Add flower
+
 
 def make_celery(app):
     celery = Celery(

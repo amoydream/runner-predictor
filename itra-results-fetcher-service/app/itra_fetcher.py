@@ -9,6 +9,8 @@ red = redis.Redis(host="itra_redis_cache", port=6379, db=0)
 
 
 class ItraRaceResultsFetcher:
+    """Scrap results from itra page"""
+
     def __init__(self, **kwargs):
         self.results = []
         self.itra_race_id = kwargs.get("itra_race_id", None)
@@ -19,7 +21,12 @@ class ItraRaceResultsFetcher:
         trs = soup.select("tbody tr")
         for tr in trs:
             data = self.extract_data_from_row(tr)
-            race_result = RaceResult(**data)
+            print(data)
+            try:
+                race_result = RaceResult(**data)
+            except ValueError as error:
+                print(error, data)
+                continue
             race_result.birth_year = ItraRunnerYearFetcher(
                 race_result.name, itra_race_id=self.itra_race_id
             ).fetch_year()
@@ -51,6 +58,8 @@ class ItraRaceResultsFetcher:
 
 
 class ItraRunnerYearFetcher:
+    """Responisbile for scrap birth year for given user"""
+
     def __init__(self, name, **kwargs):
         self.name = name
         self.itra_race_id = kwargs.get("itra_race_id", None)
