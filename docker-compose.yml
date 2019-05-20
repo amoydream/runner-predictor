@@ -20,6 +20,7 @@ services:
     restart: on-failure  
     depends_on:
       - db
+  
   itrafetcher:
     build: ./itra-results-fetcher-service
     command: >
@@ -33,6 +34,21 @@ services:
     image: redis
     expose:
       - 6379      
+
+  celery_worker_1:
+    build:
+      context: ./itra-results-fetcher-service
+    hostname: worker_1
+    entrypoint: celery
+    command: -A  app.app.celery worker 
+    volumes:
+      - ./itra-results-fetcher-service:/flask_code
+    links:
+      - itra_redis_cache
+    depends_on:
+      - itra_redis_cache
+
+
 
 
   resultapi:
