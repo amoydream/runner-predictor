@@ -65,8 +65,25 @@ class CrudRaceResultTests(TestCase):
             "runner_birth": "1980",
             "time_result": "03:30:29",
         }
+
         res = self.client.post(r_url, payload)
+        print(res.content)
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+
+    def test_create_race_results_failed_with_dupilactions(self):
+
+        race = RaceFactory.create()
+        payload = {
+            "runner_name": "Michal Mojek",
+            "runner_birth": "1980",
+            "time_result": "03:30:29",
+        }
+        r_url = reverse("api:race-results-list", args=[race.id])
+        res = self.client.post(r_url, payload)
+        res2 = self.client.post(r_url, payload)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(res2.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_race_result_with_wrong_race(self):
         """Test failed creation race result with wrong race id"""

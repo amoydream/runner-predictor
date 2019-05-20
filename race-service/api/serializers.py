@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
 from api.models import Race, RaceResult
 
 
@@ -27,5 +28,11 @@ class RaceResultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = RaceResult
-        fields = ("id", "runner_name", "runner_birth", "time_result")
-        read_only_field = ("id",)
+        fields = ("id", "race", "runner_name", "runner_birth", "time_result")
+        read_only_field = ("id", "race")
+        validators = [
+            UniqueTogetherValidator(
+                queryset=RaceResult.objects.all(),
+                fields=("race", "runner_name", "runner_birth", "time_result"),
+            )
+        ]
