@@ -25,7 +25,7 @@ SECRET_KEY = "xj(blys3@cglaw)$+@8%p++=zy!g+0diyd-bw0isvw^tsp+#st"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["resultapi", "localhost"]
 
 
 # Application definition
