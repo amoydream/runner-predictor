@@ -1,9 +1,9 @@
 from rest_framework import viewsets
-from api import serializers
+from rest_framework.response import Response
 from rest_framework_extensions.mixins import NestedViewSetMixin
+from api import serializers
+from rest_framework import status
 from api.models import Race, RaceResult
-from rest_framework.exceptions import ValidationError
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -19,11 +19,13 @@ class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = RaceResult.objects.all()
     serializer_class = serializers.RaceResultSerializer
 
-    def perform_create(self, serializer):
-        """Create a new object"""
-        race_id = self.kwargs.get("parent_lookup_race")
-        try:
-            race = Race.objects.get(pk=race_id)
-        except ObjectDoesNotExist:
-            raise ValidationError("Race dosen't Exists")
-        serializer.save(race=race)
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()
+        data["race"] = kwargs.get("parent_lookup_race")
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )
