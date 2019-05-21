@@ -1,0 +1,4778 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+<html lang="pl">
+
+<head>
+
+    <title>Szukaj wyników</title>
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://static.enduhub.com/enduhub.min.css?v=r9" />
+    <link rel="stylesheet" type="text/css" href="https://static.enduhub.com/rank.css?v=r5" />
+    <link rel="stylesheet" type="text/css" href="https://static.enduhub.com/calendar.css?v=r5" />
+    <link rel="stylesheet" type="text/css" href="https://static.enduhub.com/items.css?v=r9" />
+    <link rel="stylesheet" type="text/css" href="https://static.enduhub.com/fluid.css?v=r8" />
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css">
+
+
+
+
+
+    <meta property="og:image" content="https://static.enduhub.com/facebook-endu-logo-ludzik.png" />
+    <meta property="fb:app_id" content="510812732296137" />
+
+
+
+    <meta property="og:title" content="Enduhub - wyniki sportowe. Bieganie, triathlon, kolarstwo" />
+
+
+
+    <meta name="title"
+        content="Wszystkie wyniki w jednym miejscu. Wyniki bieganie - maraton, półmaraton, triathlon - ironman i olimpijski - kolarstwo - pływanie - kolarstwo górskie. Znajdź swoje wyniki !">
+
+
+    <meta name="description"
+        content="Wszystkie wyniki w jednym miejscu. Wyniki bieganie - maraton, półmaraton, triathlon - ironman i olimpijski - kolarstwo - pływanie - kolarstwo górskie. Znajdź swoje wyniki !">
+
+
+    <meta name="keywords"
+        content="wyniki sporty wytrzymałośćiowe, bieganie, kolarstwo, MTB, triatlon, pływanie, duathlon, maraton, multisport">
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+
+
+    <meta name="robots" content="noindex,follow">
+
+
+
+
+
+    <link rel="canonical" href="https://enduhub.com/pl/search/" />
+
+
+</head>
+
+
+<body>
+
+
+
+    <!-- Nav bar -->
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div>
+                <a class="brand" href="/pl/"><img alt="zawody & wyniki w jednym miejscu"
+                        title="zawody & wyniki w jednym miejscu" src="https://static.enduhub.com//endupac-bar.png"></a>
+            </div>
+            <div>
+
+
+                <!-- Home page does not define top bar search as it has it's own search bar -->
+
+
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="https://prime.enduhub.com/pl/"><img style="max-height:25px"
+                                src="https://static.enduhub.com/enduroll/static/primelogo.png"><sup class="new"> nowość
+                                !</sup></a></li>
+
+                    <li><a href="/pl/rank/epi/">Rankingi</a></li>
+
+                    <li><a href="/pl/teams/wszystkie/zespo%C5%82y/">Zespoły</a></li>
+                    <li><a href="/pl/lista/wszystkie/imprezy/">Wszystkie zawody</a></li>
+                    <!--  <li><a href="/pl/zawody/kalendarz/Maj/2019">Planuj start</a></li> -->
+                    <li><a href="/pl/zawody/kalendarz/2019">Kalendarz</a></li>
+                    <!--  <li><a href="/pl/dodaj/nowe-wyniki/">Zgłoś wyniki</a></li> -->
+                    <li><a href="/pl/zg%C5%82oszenia/wszystko/">Zgłoszenia</a></li>
+
+
+
+
+
+                    <li>
+                        <div class="btn-group">
+                            <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><i
+                                    class="icon-user icon-white"></i>
+                                mojek
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <!-- dropdown menu links -->
+                                <li><a href="/pl/mojek/"><i class="icon-road"></i> Moje wyniki</a></li>
+                                <li><a href="/pl/the-best-of/mojek/"><i class="icon-star"></i> Moje rekordy</a></li>
+                                <li><a href="/pl/mojek/zawody/kalendarz/"><i class="icon-calendar"></i> Moje plany</a>
+                                </li>
+                                <li><a href="/pl/teams/poka%C5%BC/mojek/"><i class="icon-tasks"></i> Moje zespoły </a>
+                                </li>
+                                <li><a href="/pl/rank/mojek/rank/"><i class="icon-th-large"></i> Moje rankingi <sup
+                                            class="new">nowość !</sup></a></li>
+                                <li><a href="/pl/submit/mojek/"><i class="icon-list"></i> Moje zgłoszenia</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/pl/user/dodaj/nowy/wynik/"><i class="icon-hand-up"></i> Dodaj wynik</a>
+                                </li>
+                                <li><a href="/pl/user/brakujace/wyniki/"><i class="icon-search"></i> Znajdź
+                                        brakujące</a></li>
+                                <li><a href="/pl/user/epi/recalculate/"><i class="icon-cog"></i> Przelicz EPI</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/pl/user/profile/edit/"><i class="icon-pencil"></i> Mój profil</a></li>
+                                <li><a href="/pl/accounts/logout/?next=/pl/search/"><i class="icon-ban-circle"></i>
+                                        Wyloguj się</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End of navigation bar -->
+
+
+    <!-- breadcrumbs -->
+
+    <ul class="breadcrumb">
+
+
+
+
+
+
+        <li><a href="/pl/"><img style="width:20px"
+                    src="https://www.gravatar.com/avatar/f5662df2f73920a14d722708eb50aef3?s=150&d=https%3A%2F%2Fstatic.enduhub.com%2F%2Fdefault-user-avatar.png?v=144" /></a><span
+                class="divider">/</span></li>
+
+
+
+
+
+        <li><a href="/pl/search/">Szukaj</a><span class="divider">/</span></li>
+
+    </ul>
+
+    <!-- end of breadcrumbs block -->
+
+    <!-- welcome -->
+
+
+
+
+
+    <div class="center-text">
+        <h2 class="line-trough">
+            <span>Szukaj</span>
+        </h2>
+    </div>
+    <div>
+
+
+
+
+        <div class="search-block">
+
+
+
+
+
+            <div class="enduzone_banner search_cover">
+                <a rel="nofollow" target="_blank" href="/enduzone/view/81/"><img
+                        src="https://media.enduhub.com/enduzone/banner/banner3.jpg" alt="EnduPrime" /></a>
+            </div>
+
+
+            <form class="form-search" action="/pl/search/" method="get">
+                <fieldset>
+                    <!-- <legend style="text-align:left">Wyszukaj zawodnika : </legend> -->
+                    <!-- <label style="text-align:left" for="id_name">Wyszukaj zawodnika : </label> 
+		 
+		 Szukaj
+		 -->
+
+
+                    <div class="input-append jador">
+                        <input id="id_name" maxlength="200" name="name"
+                            placeholder="nazwisko albo numer startowy, np: &#39;Jan Kowalski&#39; albo &#39;666,Jan Kowalski&#39;"
+                            results="5" type="search" value="paweł wójcik" />
+                        <button type="submit" class="btn btn-large btn-info"><i
+                                class="icon-search icon-white"></i></button></div>
+                </fieldset>
+            </form>
+        </div>
+
+
+
+
+
+    </div>
+    <hr class="bluehr" />
+    <hr class="bluehr" />
+
+
+
+    <div class="alert">
+        Znaleziono '663' wyników. Spróbuj zawęzić kryteria wyszukiwania.
+    </div>
+
+
+    <div>
+        <form id="get_form" action="/pl/search/" method="get">
+            <!--<input type='hidden' name='csrfmiddlewaretoken' value='LhY1DtY57C8sUj8f9GmpxEZq8qhnqkfx' /> -->
+            <input id="id_name" maxlength="200" name="name"
+                placeholder="nazwisko albo numer startowy, np: &#39;Jan Kowalski&#39; albo &#39;666,Jan Kowalski&#39;"
+                type="hidden" value="paweł wójcik" />
+
+            <table>
+
+
+                <thead>
+
+                    <th style="text-align:center">
+
+                        <button onClick="return false" data-toggle="button" class="btn btn-info btn-mini"
+                            rel="help-popover" title="Filtruj"
+                            data-content="Wpisz dane w nagłówku kolumny w wciśnij filtruj. Naciśnij wyczyść aby usunąć filtr.">
+                            <i class="icon-question-sign icon-white"></i>
+                        </button>
+
+
+                    </th>
+
+
+                    <th class="sorted column-icon orderable sortable taken user-icon" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=taken&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle column-icon orderable sortable taken user-icon" title="Zmień"></a>
+                        </div>
+
+                        <div style="text-align:center" class="text">
+                            <a href="?sort=taken&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">
+                                <i class="icon-edit icon-white"></i>
+                            </a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted nr orderable sortable width-1" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=nr&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle nr orderable sortable width-1" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=nr&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Numer</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted orderable sortable width-1 yob" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=yob&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle orderable sortable width-1 yob" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=yob&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Rok</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted orderable place sortable width-1" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=place&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle orderable place sortable width-1" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=place&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Miejsce</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted name orderable sortable" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=name&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle name orderable sortable" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=name&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Zawodnik</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted best orderable sortable" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=best&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle best orderable sortable" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=best&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Wynik</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted event orderable sortable" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=event&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle event orderable sortable" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=event&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Zawody</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted distance orderable sortable" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=distance&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle distance orderable sortable" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=distance&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Dystans</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted orderable sortable sport" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=sport&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle orderable sortable sport" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=sport&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Sport</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+
+                    <th class="sorted date orderable sortable width-15" scope="col">
+                        <div class="sortoptions">
+                            <a href="?sort=date&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1"
+                                class="toggle date orderable sortable width-15" title="Zmień"></a>
+                        </div>
+
+                        <div class="text">
+                            <a href="?sort=date&amp;name=pawe%C5%82+w%C3%B3jcik&amp;page=1">Data</a>
+                        </div>
+
+                        <div class="clear"></div>
+                    </th>
+
+
+                    </tr>
+                </thead>
+
+
+
+
+
+                <tbody>
+
+                    <tr>
+                        <td class="center-text">
+
+                            <button class="btn btn-info btn-small" type="submit" value="Filtr"><i
+                                    class="icon-filter icon-white"></i> Filtruj</button>
+
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <input id="id_base_nr" name="base_nr" type="text" />
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <input id="id_base_yob" name="base_yob" type="text" />
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <input id="id_base_place" name="base_place" type="text" />
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <select id="id_eventdistance" name="eventdistance">
+                                    <option value="" selected="selected">Wszystko</option>
+                                    <option value="19">Multi</option>
+                                    <option value="7">5 km</option>
+                                    <option value="8">10 km</option>
+                                    <option value="20">15 km</option>
+                                    <option value="2">Półmaraton</option>
+                                    <option value="1">Maraton</option>
+                                    <option value="18">1/8 Ironman</option>
+                                    <option value="17">1/4 Ironman</option>
+                                    <option value="4">1/2 Ironman</option>
+                                    <option value="5">Ironman</option>
+                                    <option value="6">Olimpijski</option>
+                                    <option value="9">0-5 km</option>
+                                    <option value="10">5-20 km</option>
+                                    <option value="11">20-50 km</option>
+                                    <option value="12">50-200 km</option>
+                                    <option value="13">Powyżej 200 km</option>
+                                </select>
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <select id="id_event__distance__category" name="event__distance__category">
+                                    <option value="" selected="selected">Wszystko</option>
+                                    <option value="2">Bieganie</option>
+                                    <option value="3">Pływanie</option>
+                                    <option value="4">Kolarstwo</option>
+                                    <option value="5">Triathlon</option>
+                                    <option value="6">Duathlon</option>
+                                    <option value="7">MTB</option>
+                                    <option value="8">Aquathlon</option>
+                                    <option value="9">Rolki</option>
+                                    <option value="10">Nordic Walking</option>
+                                    <option value="11">Marszobiegi</option>
+                                    <option value="12">Biegi Narciarskie</option>
+                                    <option value="13">Biegi Górskie</option>
+                                    <option value="14">Biegi Przeszkodowe</option>
+                                </select>
+
+                            </div>
+                        </td>
+
+                        <td>
+
+                            <div class="field_wrapper">
+                                <input class="date-input-filter" id="id_date_0" name="date_0" type="text" />-<input
+                                    class="date-input-filter" id="id_date_1" name="date_1" type="text" />
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+
+
+                    <tr class='row1 Zawody'>
+                        <td>#1
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/itmbwieczorem-292-bieganie-10-km,krakow,2019,51811,11066775/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:37:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/05/16/bieganie/itmbwieczorem-292,51811/">ITMBWieczorem #292</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-16</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#2
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>99</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                7
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/viii-bieg-kwitnacej-jabloni-bieganie-6_6-km,lacko,2019,51741,11055572/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:28:25</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/05/11/bieganie/viii-bieg-kwitnacej-jabloni,51741/">VIII Bieg
+                                Kwitnącej Jabłoni</a>
+
+                        </td>
+                        <td class='distance'>6,6 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-11</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#3
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>296</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                6
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/xii-katowicki-festiwal-biegowy-im-j-kukuczki-bieganie-10-km,katowice,2019,51780,11064423/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:36:54</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/05/11/bieganie/xii-katowicki-festiwal-biegowy-im-j-kukuczki,51780/">XII
+                                Katowicki Festiwal Biegowy im. J. Kukuczki</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-11</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#4
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/itmbwieczorem-290-bieganie-10-km,krakow,2019,51520,11020964/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:40:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/05/09/bieganie/itmbwieczorem-290,51520/">ITMBWieczorem #290</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-09</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#5
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>839</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/iii-bieg-z-flaga-bieganie-5-km,katowice,2019,51191,10937615/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:18</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/05/02/bieganie/iii-bieg-z-flaga,51191/">III Bieg z Flagą</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#6
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>121</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                14
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/viii-bieg-ziemi-limanowskiej-mezczyzni-bieganie-4-km,stara-wies,2019,51492,11019183/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:13:44</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/05/01/bieganie/viii-bieg-ziemi-limanowskiej-mezczyzni,51492/">VIII
+                                bieg ziemi Limanowskiej - mężczyźni</a>
+
+                        </td>
+                        <td class='distance'>4 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-05-01</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#7
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>5230</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                127
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/18-pzu-cracovia-maraton-bieganie-maraton,krakow,2019,51166,10927659/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>02:59:58</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/28/bieganie/18-pzu-cracovia-maraton,51166/">18. PZU Cracovia
+                                Maraton</a>
+
+                        </td>
+                        <td class='distance'>Maraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-28</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#8
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>1281</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                18
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/xxvi-bieg-uliczny-im-wojciecha-korfantego-bieganie-10-km,katowice-siemianowice-slaskie,2019,51115,10912146/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:35:37</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/27/bieganie/xxvi-bieg-uliczny-im-wojciecha-korfantego,51115/">XXVI
+                                Bieg Uliczny im. Wojciecha Korfantego</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-27</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#9
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3000</td>
+                        <td class='yob'>86</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                347
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/bieg-nocny-bieganie-10-km,krakow,2019,51156,10919336/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:46:14</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/27/bieganie/bieg-nocny,51156/">Bieg Nocny</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-27</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#10
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-285-bieganie-5-km,krakow,2019,51110,10911585/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:18:34</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/25/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-285,51110/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #285</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-25</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#11
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>2658</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                2329
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/runmageddon-rekrut-biegi-przeszkodowe-6-km,wroclaw,2019,50898,10894648/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:52:57</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/13/biegi-przeszkodowe/runmageddon-rekrut,50898/">Runmageddon
+                                Rekrut</a>
+
+                        </td>
+                        <td class='distance'>6 km</td>
+                        <td class='sport'>Biegi Przeszkodowe</td>
+                        <td class='date'>2019-04-13</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#12
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>202</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                64
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/wieliszewski-crossing-wiosnaa-bieganie-12_5-km,wieliszew,2019,50498,10816260/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:02:42</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/07/bieganie/wieliszewski-crossing-wiosnaa,50498/">Wieliszewski
+                                Crossing Wiosnaa</a>
+
+                        </td>
+                        <td class='distance'>12,5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-07</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#13
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>323</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                9
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/perly-malopolski-bieg-dlugi-biegi-gorskie-20_7-km,skala,2019,50550,10823061/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:29:34</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/07/biegi-gorskie/perly-malopolski-bieg-dlugi,50550/">Perły
+                                Małopolski - Bieg Długi</a>
+
+                        </td>
+                        <td class='distance'>20,7 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2019-04-07</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#14
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                8
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-280-bieganie-10-km,krakow,2019,50311,10783498/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:42:09</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/04/04/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-280,50311/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #280</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-04-04</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#15
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>664</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                7
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/9-bieg-o-zlote-gacie-bieganie-10-km,brzeszcze,2019,50213,10762878/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:37:04</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/30/bieganie/9-bieg-o-zlote-gacie,50213/">9 Bieg o Złote
+                                Gacie</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-30</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#16
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-278-bieganie-10-km,krakow,2019,50210,10762710/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:39:48</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/28/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-278,50210/">I
+                                Ty Możesz Biegać Wieczorem w Krakowie #278</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-28</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#17
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3831</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                187
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/16-krakowski-polmaraton-marzanny-bieganie-polmaraton,krakow,2019,50041,10739789/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:27:38</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/24/bieganie/16-krakowski-polmaraton-marzanny,50041/">16.
+                                Krakowski Półmaraton Marzanny</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-24</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#18
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3830</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1244
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/16-krakowski-polmaraton-marzanny-bieganie-polmaraton,krakow,2019,50041,10740846/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:45:55</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/24/bieganie/16-krakowski-polmaraton-marzanny,50041/">16.
+                                Krakowski Półmaraton Marzanny</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-24</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#19
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>185</td>
+                        <td class='yob'>74</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                82
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/iii-bieg-mlodzika-bieganie-7_8-km,radzymin,2019,50073,10748452/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:40:41</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/24/bieganie/iii-bieg-mlodzika,50073/">III Bieg Młodzika</a>
+
+                        </td>
+                        <td class='distance'>7,8 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-24</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#20
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>1261</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                96
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/bieg-zielonych-sznurowadel-bieganie-polmaraton,pulawy,2019,49855,10721404/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:39:43</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/17/bieganie/bieg-zielonych-sznurowadel,49855/">Bieg Zielonych
+                                Sznurowadeł
+                            </a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-17</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#21
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                6
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-272-bieganie-10-km,krakow,2019,49648,10677397/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:42:39</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/03/07/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-272,49648/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #272</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-07</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#22
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>521</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                43
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/tropem-wilczym-bieg-pamieci-zolnierzy-wykletych-bieganie-5_889-km,lublin,2019,49641,10676305/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:25:52</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/03/03/bieganie/tropem-wilczym-bieg-pamieci-zolnierzy-wykletych,49641/">Tropem
+                                Wilczym Bieg Pamieci Zołnierzy Wykletych</a>
+
+                        </td>
+                        <td class='distance'>5,889 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-03</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#23
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>2060</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                27
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/grand-prix-krakowa-w-biegach-gorskich-e5-biegi-gorskie-5_7-km,krakow,2019,49721,10700058/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:30:07</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/03/03/biegi-gorskie/grand-prix-krakowa-w-biegach-gorskich-e5,49721/">Grand
+                                Prix Krakowa w Biegach Górskich - E5 </a>
+
+                        </td>
+                        <td class='distance'>5,7 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2019-03-03</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#24
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>133</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                46
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/xix-ogolnopolski-bieg-grzmia-pod-stoczkiem-armaty-bieganie-10-km,stoczek-lukowski,2019,49445,10650612/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:43:22</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/03/02/bieganie/xix-ogolnopolski-bieg-grzmia-pod-stoczkiem-armaty,49445/">XIX
+                                Ogólnopolski Bieg Grzmią Pod Stoczkiem Armaty</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-03-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#25
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                4
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-270-bieganie-10-km,krakow,2019,49322,10638198/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:43:14</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/28/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-270,49322/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #270</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-28</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#26
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                9
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-216-bieganie-5-km,chrzanow,2019,49123,10619363/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:22:37</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/23/bieganie/parkrun-chrzanow-216,49123/">Parkrun Chrzanow
+                                216</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-23</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#27
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>106</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/gorski-bieg-nawoja-2019-e2-biegi-gorskie-2_5-km,nawojowa-gora,2019,49048,10605425/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:14:21</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/17/biegi-gorskie/gorski-bieg-nawoja-2019-e2,49048/">Górski Bieg
+                                Nawoja 2019 - E2</a>
+
+                        </td>
+                        <td class='distance'>2,5 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2019-02-17</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#28
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>2263</td>
+                        <td class='yob'>1991</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                167
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/bieg-urodzinowy-z-pko-bankiem-polskim-bieganie-10-km,gdynia,2019,49089,10611538/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:40:00</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/17/bieganie/bieg-urodzinowy-z-pko-bankiem-polskim,49089/">Bieg
+                                Urodzinowy z PKO Bankiem Polskim</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-17</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#29
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-215-bieganie-5-km,chrzanow,2019,48934,10588306/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:18:29</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/16/bieganie/parkrun-chrzanow-215,48934/">Parkrun Chrzanow
+                                215</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-16</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#30
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>167</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                24
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/grand-prix-krakowa-w-biegach-gorskich-e4-biegi-gorskie-3_7-km,krakow,2019,48714,10567645/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:20:35</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/02/03/biegi-gorskie/grand-prix-krakowa-w-biegach-gorskich-e4,48714/">Grand
+                                Prix Krakowa w biegach górskich - E4</a>
+
+                        </td>
+                        <td class='distance'>3,7 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2019-02-03</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#31
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                13
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-213-bieganie-5-km,chrzanow,2019,48604,10557639/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:23:39</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/02/bieganie/parkrun-chrzanow-213,48604/">Parkrun Chrzanow
+                                #213</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#32
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>40</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                259
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/trzecia-dycha-do-maratonu-bieganie-10-km,lublin,2019,48672,10564130/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:46:40</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/02/02/bieganie/trzecia-dycha-do-maratonu,48672/">Trzecia Dycha do
+                                Maratonu</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-02-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#33
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-212-bieganie-5-km,chrzanow,2019,48481,10546302/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:19:49</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/01/26/bieganie/parkrun-chrzanow-212,48481/">Parkrun Chrzanow
+                                #212</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-01-26</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#34
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>987</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                38
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/7-bieg-wielkich-serc-bieganie-5-km,krakow,2019,48248,10520755/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:19:54</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2019/01/13/bieganie/7-bieg-wielkich-serc,48248/">7. Bieg Wielkich
+                                Serc</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2019-01-13</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#35
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>167</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                25
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/grand-prix-krakowa-w-biegach-gorskich-e3-biegi-gorskie-3_7-km,krakow,2019,48108,10506765/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:20:40</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2019/01/06/biegi-gorskie/grand-prix-krakowa-w-biegach-gorskich-e3,48108/">Grand
+                                Prix Krakowa w Biegach Górskich - E3</a>
+
+                        </td>
+                        <td class='distance'>3,7 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2019-01-06</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#36
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>211</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/ii-bieg-sladami-zubra-bieganie-6-km,studzienice,2018,47711,10461408/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:20:59</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/29/bieganie/ii-bieg-sladami-zubra,47711/">II Bieg Śladami
+                                Żubra</a>
+
+                        </td>
+                        <td class='distance'>6 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-29</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#37
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/parkrun-chrzanow-206-bieganie-5-km,chrzanow,2018,47643,10451255/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:49</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/26/bieganie/parkrun-chrzanow-206,47643/">Parkrun Chrzanow
+                                #206</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-26</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#38
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                64
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-205-bieganie-5-km,chrzanow,2018,47562,10433423/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:55:47</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/22/bieganie/parkrun-chrzanow-205,47562/">Parkrun Chrzanow
+                                #205</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-22</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#39
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>758</td>
+                        <td class='yob'>1982</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                14
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/chec-na-piec-bieganie-5-km,lublin,2018,47490,10426892/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:18:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/16/bieganie/chec-na-piec,47490/">Chęć na Pięć</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-16</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#40
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                52
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-204-bieganie-5-km,chrzanow,2018,47424,10423012/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:46:26</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/15/bieganie/parkrun-chrzanow-204,47424/">Parkrun Chrzanow
+                                #204</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-15</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#41
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>919</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                151
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/garmin-ultra-race-trojmiasto-biegi-gorskie-52-km,gdansk,2018,47281,10403483/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>06:35:05</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/08/biegi-gorskie/garmin-ultra-race-trojmiasto,47281/">Garmin
+                                Ultra Race Trójmiasto</a>
+
+                        </td>
+                        <td class='distance'>52 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2018-12-08</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#42
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>139</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                52
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/v-bieg-mikolajkowy-w-zytniowie-bieganie-5-km,zytniow,2018,47060,10373863/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:24:03</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/02/bieganie/v-bieg-mikolajkowy-w-zytniowie,47060/">V Bieg
+                                Mikołajkowy w Żytniowie</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#43
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                66
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-202-bieganie-5-km,chrzanow,2018,47068,10374397/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:50:13</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/12/01/bieganie/parkrun-chrzanow-202,47068/">Parkrun Chrzanow
+                                #202</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-12-01</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#44
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-267-bieganie-10-km,krakow,2018,47016,10369222/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:48:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/29/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-267,47016/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #267</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-29</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#45
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>40</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                112
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/druga-dycha-do-maratonu-bieganie-10-km,lublin,2018,46922,10352142/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:42:16</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/25/bieganie/druga-dycha-do-maratonu,46922/">Druga Dycha do
+                                Maratonu</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-25</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#46
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>794</td>
+                        <td class='yob'>1982</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                668
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/druga-dycha-do-maratonu-bieganie-10-km,lublin,2018,46922,10352855/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:57:59</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/25/bieganie/druga-dycha-do-maratonu,46922/">Druga Dycha do
+                                Maratonu</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-25</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#47
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/iv-zimowe-grand-prix-oswiecimia-bieganie-7_8-km,oswiecim,2018,46989,10359672/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:29:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/25/bieganie/iv-zimowe-grand-prix-oswiecimia,46989/">IV Zimowe
+                                Grand Prix Oświęcimia</a>
+
+                        </td>
+                        <td class='distance'>7,8 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-25</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#48
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/parkrun-chrzanow-200-bieganie-5-km,chrzanow,2018,46659,10308463/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:57</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/17/bieganie/parkrun-chrzanow-200,46659/">Parkrun Chrzanow
+                                #200</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-17</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#49
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>23464</td>
+                        <td class='yob'>1981</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                7047
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/3-poznanski-bieg-niepodleglosci-bieganie-10-km,poznan,2018,46448,10251870/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:53:52</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/3-poznanski-bieg-niepodleglosci,46448/">3 Poznański
+                                Bieg Niepodległości</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#50
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>222</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                130
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/vii-powiatowy-bieg-niepodleglosci-bieganie-10-km,zdunska-wola,2018,46480,10277999/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:52:58</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/vii-powiatowy-bieg-niepodleglosci,46480/">VII
+                                Powiatowy Bieg Niepodległości</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#51
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>133</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                18
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/bieg-niepodleglosci-bieganie-10-km,kosakowo,2018,46411,10228499/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:41:24</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/bieg-niepodleglosci,46411/">Bieg Niepodległości</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#52
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3043</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                299
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/krakowski-bieg-niepodleglosci-bieganie-11-km,krakow,2018,46467,10268489/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:51:08</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/krakowski-bieg-niepodleglosci,46467/">Krakowski Bieg
+                                Niepodległości</a>
+
+                        </td>
+                        <td class='distance'>11 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#53
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>284</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/9-bieg-niepodleglosciowy-bieganie-11-km,oswiecim,2018,46604,10301357/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:39:16</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/9-bieg-niepodleglosciowy,46604/">9 Bieg
+                                Niepodległościowy</a>
+
+                        </td>
+                        <td class='distance'>11 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#54
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>11718</td>
+                        <td class='yob'>79</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                5159
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/30-bieg-niepodleglosci-bieganie-10-km,warszawa,2018,46784,10324945/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:50:52</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/11/bieganie/30-bieg-niepodleglosci,46784/">30. Bieg
+                                Niepodległości</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-11</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#55
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                5
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/parkrun-chrzanow-199-bieganie-5-km,chrzanow,2018,46345,10222602/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:19:50</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/10/bieganie/parkrun-chrzanow-199,46345/">Parkrun Chrzanow
+                                #199</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-10</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#56
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/parkrun-chrzanow-198-bieganie-5-km,chrzanow,2018,46127,10193822/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:50</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/11/03/bieganie/parkrun-chrzanow-198,46127/">Parkrun Chrzanow
+                                #198</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-11-03</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#57
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>282</td>
+                        <td class='yob'>1982</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                233
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/mila-na-start-bieganie-8_047-km,lublin,2018,46016,10177962/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:46:00</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/28/bieganie/mila-na-start,46016/">Mila na Start</a>
+
+                        </td>
+                        <td class='distance'>8,047 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-28</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#58
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>168</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/grodek-trail-biegi-gorskie-10-km,jaworzno,2018,46054,10185203/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:43:16</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/28/biegi-gorskie/grodek-trail,46054/">Gródek Trail</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2018-10-28</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#59
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-259-bieganie-10-km,krakow,2018,46197,10198369/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:45:41</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/25/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-259,46197/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #259</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-25</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#60
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/parkrun-chrzanow-196-bieganie-5-km,chrzanow,2018,45712,10117908/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:49</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/20/bieganie/parkrun-chrzanow-196,45712/">Parkrun Chrzanow
+                                #196</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-20</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#61
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>58</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                51
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/2-lotto-polmaraton-lubelski-bieganie-polmaraton,lublin,2018,45553,10073187/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:32:14</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/14/bieganie/2-lotto-polmaraton-lubelski,45553/">2. Lotto
+                                Półmaraton Lubelski</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-14</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#62
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>985</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                548
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/33-bieg-barborkowy-o-lampke-gornicza-bieganie-10-km,lubin,2018,45554,10074387/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:50:16</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/14/bieganie/33-bieg-barborkowy-o-lampke-gornicza,45554/">33.
+                                Bieg Barbórkowy O Lampkę Górniczą</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-14</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#63
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>4531</td>
+                        <td class='yob'>1976</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1712
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/19-pko-poznan-maraton-bieganie-maraton,poznan,2018,45570,10080742/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>03:56:55</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/14/bieganie/19-pko-poznan-maraton,45570/">19. PKO Poznań
+                                Maraton</a>
+
+                        </td>
+                        <td class='distance'>Maraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-14</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#64
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>5999</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1894
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/5-pzu-cracovia-polmaraton-krolewski-bieganie-polmaraton,krakow,2018,45658,10096904/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:44:17</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/14/bieganie/5-pzu-cracovia-polmaraton-krolewski,45658/">5. PZU
+                                Cracovia Półmaraton Królewski</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-14</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#65
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>494</td>
+                        <td class='yob'>1998</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/nocny-bieg-po-pszczynie-bieganie-6_7-km,pszczyna,2018,45693,10114079/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:21:59</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/13/bieganie/nocny-bieg-po-pszczynie,45693/">Nocny Bieg po
+                                Pszczynie</a>
+
+                        </td>
+                        <td class='distance'>6,7 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-13</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#66
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>6158</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                2703
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/biegnij-warszawo-bieganie-10-km,warszawa,2018,45390,10047157/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:57:07</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/07/bieganie/biegnij-warszawo,45390/">Biegnij Warszawo</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-07</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#67
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>1977</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                9
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/pko-silesia-minimaraton-bieganie-4_4-km,katowice,2018,45398,10054147/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:14:48</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/10/06/bieganie/pko-silesia-minimaraton,45398/">PKO Silesia
+                                Minimaraton</a>
+
+                        </td>
+                        <td class='distance'>4,4 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-10-06</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#68
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>170</td>
+                        <td class='yob'>98</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                5
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/dziesiatka-w-dziesiatce-bieganie-10-km,kety,2018,47371,10414678/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:36:37</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/30/bieganie/dziesiatka-w-dziesiatce,47371/">Dziesiątka w
+                                Dziesiątce</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-30</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#69
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>351</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                433
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel-krakow/koncowy-wynik/12-pzu-bieg-trzech-kopcow-biegi-gorskie-13-km,krakow,2018,45111,9997962/">Wójcik
+                                Paweł Kraków</a></td>
+                        <td class='best'>01:02:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/30/biegi-gorskie/12-pzu-bieg-trzech-kopcow,45111/">12. PZU Bieg
+                                Trzech Kopców</a>
+
+                        </td>
+                        <td class='distance'>13 km</td>
+                        <td class='sport'>Biegi Górskie</td>
+                        <td class='date'>2018-09-30</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#70
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>75</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                42
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/gasiewski-artur-bazylewicz-jerzy-witkowski-pawel-markowska-wojcik-anna/koncowy-wynik/bieg-erasmusa-bieganie-8-km,warszawa,2018,47676,10453119/">Gąsiewski
+                                Artur Bazylewicz Jerzy Witkowski Paweł Markowska-Wójcik Anna</a></td>
+                        <td class='best'>00:39:41</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/29/bieganie/bieg-erasmusa,47676/">Bieg Erasmusa+</a>
+
+                        </td>
+                        <td class='distance'>8 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-29</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#71
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>104</td>
+                        <td class='yob'>1978</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                34
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-lubelski-duathlon-duathlon-30-km,lublin,2018,44678,9939994/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>01:55:17</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/23/duathlon/i-lubelski-duathlon,44678/">I Lubelski Duathlon</a>
+
+                        </td>
+                        <td class='distance'>30 km</td>
+                        <td class='sport'>Duathlon</td>
+                        <td class='date'>2018-09-23</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#72
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>556</td>
+                        <td class='yob'>1976</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                8
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/bieg-legionistow-biegi-pogorza-bieganie-10-km,plesna,2018,44694,9943402/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:42:20</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/23/bieganie/bieg-legionistow-biegi-pogorza,44694/">Bieg
+                                Legionistów - Biegi Pogórza</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-23</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#73
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3609</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                272
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/41-bieg-lechitow-bieganie-polmaraton,gniezno,2018,44414,9876366/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:35:59</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/16/bieganie/41-bieg-lechitow,44414/">41. Bieg Lechitów</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-16</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#74
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3425</td>
+                        <td class='yob'>90</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                711
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/41-bieg-lechitow-bieganie-polmaraton,gniezno,2018,44414,9876847/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:45:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/16/bieganie/41-bieg-lechitow,44414/">41. Bieg Lechitów</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-16</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#75
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-191-bieganie-5-km,chrzanow,2018,44181,9836365/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:18:25</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/15/bieganie/parkrun-chrzanow-191,44181/">Parkrun Chrzanow
+                                #191</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-15</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#76
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>82</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                14
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/v-lubartowski-polmaraton-bez-granic-bieganie-polmaraton,lubartow,2018,44123,9831630/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:31:44</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/09/bieganie/v-lubartowski-polmaraton-bez-granic,44123/">V
+                                Lubartowski Półmaraton &quot;Bez Granic&quot;</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-09</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#77
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>2244</td>
+                        <td class='yob'>1976</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                319
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/36pko-wroclaw-maraton-bieganie-maraton,wroclaw,2018,44328,9859059/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>03:27:05</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/09/bieganie/36pko-wroclaw-maraton,44328/">36.PKO Wrocław
+                                Maraton</a>
+
+                        </td>
+                        <td class='distance'>Maraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-09</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#78
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>644</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                -
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/business-run-bieganie-3_65-km,lodz,2018,43576,9714157/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:17:20</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/business-run,43576/">Business Run</a>
+
+                        </td>
+                        <td class='distance'>3,65 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#79
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                666
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/poland-business-run-krakow-bieganie-3_8-km,krakow,2018,44116,9826514/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:16:01</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/poland-business-run-krakow,44116/">Poland Business
+                                Run Kraków</a>
+
+                        </td>
+                        <td class='distance'>3,8 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#80
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                5
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/poland-business-run-warszawa-bieganie-4_2-km,warszawa,2018,44277,9843571/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:13:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/poland-business-run-warszawa,44277/">Poland Business
+                                Run - Warszawa</a>
+
+                        </td>
+                        <td class='distance'>4,2 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#81
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1151
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/poland-business-run-warszawa-bieganie-4_2-km,warszawa,2018,44277,9844717/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:20:18</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/poland-business-run-warszawa,44277/">Poland Business
+                                Run - Warszawa</a>
+
+                        </td>
+                        <td class='distance'>4,2 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#82
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                3293
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/poland-business-run-warszawa-bieganie-4_2-km,warszawa,2018,44277,9846859/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:32:15</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/poland-business-run-warszawa,44277/">Poland Business
+                                Run - Warszawa</a>
+
+                        </td>
+                        <td class='distance'>4,2 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#83
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>3738</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1027
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/28-miedzynarodowy-polmaraton-philips-bieganie-polmaraton,pila,2018,43738,9759887/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:46:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/02/bieganie/28-miedzynarodowy-polmaraton-philips,43738/">28.
+                                Międzynarodowy Półmaraton Philips</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#84
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>2894</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                663
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/4f-piatka-praska-bieganie-5-km,warszawa,2018,43736,9750432/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:26:53</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/01/bieganie/4f-piatka-praska,43736/">4F Piątka Praska</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-01</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#85
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>148</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                46
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/enea-vi-energetyczna-dycha-bieganie-10-km,kozienice,2018,43885,9787212/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:46:03</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/09/01/bieganie/enea-vi-energetyczna-dycha,43885/">Enea VI
+                                Energetyczna Dycha</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-09-01</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#86
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                12
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-243-bieganie-10-km,krakow,2018,43498,9709239/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:43:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/30/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-243,43498/">I
+                                Ty Możesz Biegać Wieczorem w Krakowie #243</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-30</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#87
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>373</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                126
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/iv-wielunski-bieg-pojednania-i-pokoju-bieganie-10-km,wielun,2018,43357,9697784/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:45:20</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/26/bieganie/iv-wielunski-bieg-pojednania-i-pokoju,43357/">IV
+                                Wieluński Bieg Pojednania i Pokoju</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-26</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#88
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>295</td>
+                        <td class='yob'>1974</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                33
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/mila-na-start-bieganie-8_6-km,lublin,2018,43345,9695861/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:34:01</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/26/bieganie/mila-na-start,43345/">Mila na Start</a>
+
+                        </td>
+                        <td class='distance'>8,6 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-26</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#89
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>185</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                123
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/i-skierniewicka-dziesiatka-im-edmunda-jaworskiego-bieganie-10-km,skierniewice,2018,43631,9723418/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:59:18</td>
+                        <td class='event'>
+
+                            <a
+                                href="/pl/wyniki/2018/08/26/bieganie/i-skierniewicka-dziesiatka-im-edmunda-jaworskiego,43631/">I
+                                Skierniewicka Dzięsiątka im. Edmunda Jaworskiego</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-26</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#90
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>5348</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                281
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/runmageddon-classic-biegi-przeszkodowe-12-km,krakow,2018,43661,9725170/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>02:23:53</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/26/biegi-przeszkodowe/runmageddon-classic,43661/">Runmageddon
+                                Classic</a>
+
+                        </td>
+                        <td class='distance'>12 km</td>
+                        <td class='sport'>Biegi Przeszkodowe</td>
+                        <td class='date'>2018-08-26</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#91
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>1105</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                2224
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/runmageddon-rekrut-biegi-przeszkodowe-6-km,krakow,2018,43764,9772873/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>02:50:04</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/25/biegi-przeszkodowe/runmageddon-rekrut,43764/">Runmageddon
+                                Rekrut</a>
+
+                        </td>
+                        <td class='distance'>6 km</td>
+                        <td class='sport'>Biegi Przeszkodowe</td>
+                        <td class='date'>2018-08-25</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#92
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>1639</td>
+                        <td class='yob'>76</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                139
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/xix-toyota-polmaraton-walbrzych-bieganie-polmaraton,walbrzych,2018,43106,9666143/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:37:33</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/19/bieganie/xix-toyota-polmaraton-walbrzych,43106/">XIX Toyota
+                                Półmaraton Wałbrzych</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-19</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#93
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+                            <img title="2 miejsce i srebrny medal. Gratulacje !"
+                                alt="2nd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/silver/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+                            <p class="centered-text">
+                                2
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-187-bieganie-5-km,chrzanow,2018,43025,9659652/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:17:59</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/18/bieganie/parkrun-chrzanow-187,43025/">Parkrun Chrzanow
+                                #187</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-18</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#94
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>103</td>
+                        <td class='yob'>74</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                154
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/27-bieg-1920-bieganie-polmaraton,radzymin,2018,42938,9650139/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>01:57:56</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/15/bieganie/27-bieg-1920,42938/">27. Bieg 1920</a>
+
+                        </td>
+                        <td class='distance'>Półmaraton</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-15</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#95
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>70</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                14
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/slawomir-salwin-adrian-targonski-kasia-wierzbicka-daniel-koscinski-marcin-ladno-michal-kowalski-pawel-wojcik/koncowy-wynik/ultramaraton-powstanca-sztafety-bieganie-63-km,wieliszew,2018,43183,9676734/">Sławomir
+                                Salwin, Adrian Targonski, Kasia Wierzbicka, Daniel Kościński, Marcin Ładno, Michał
+                                Kowalski, Paweł Wójcik</a></td>
+                        <td class='best'>05:09:41</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/05/bieganie/ultramaraton-powstanca-sztafety,43183/">Ultramaraton
+                                Powstańca - Sztafety</a>
+
+                        </td>
+                        <td class='distance'>63 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-05</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#96
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>170</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                23
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/v-czastarska-piatka-bieganie-5-km,czastary,2018,42672,9620321/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:21:06</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/04/bieganie/v-czastarska-piatka,42672/">V Czastarska Piątka</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-04</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#97
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>678</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                9
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/pawel-wojcik/koncowy-wynik/i-ty-mozesz-biegac-wieczorem-w-krakowie-235-bieganie-10-km,krakow,2018,43208,9679726/">Paweł
+                                Wójcik</a></td>
+                        <td class='best'>00:44:13</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/08/02/bieganie/i-ty-mozesz-biegac-wieczorem-w-krakowie-235,43208/">I
+                                Ty Możesz Biegać Wieczorem W Krakowie #235</a>
+
+                        </td>
+                        <td class='distance'>10 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-08-02</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#98
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+                            <img title="1 miejsce i złoty medal. Gratulacje !"
+                                alt="1 miejsce i złoty medal. Gratulacje !"
+                                src="https://static.enduhub.com/medals/gold/res/mipmap-hdpi/ic_launcher.png" />
+
+
+
+
+
+
+                            <p class="centered-text">
+                                1
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-184-bieganie-5-km,chrzanow,2018,42396,9581951/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:18:32</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/07/28/bieganie/parkrun-chrzanow-184,42396/">Parkrun Chrzanow
+                                #184</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-07-28</td>
+                    </tr>
+                    <tr class='row1 Zawody'>
+                        <td>#99
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>333</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+
+                            <p class="centered-text">
+                                6
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/wojcik-pawel/koncowy-wynik/city-trail-ontour-katowice-bieganie-5-km,katowice,2018,42504,9592541/">Wójcik
+                                Paweł</a></td>
+                        <td class='best'>00:17:29</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/07/26/bieganie/city-trail-ontour-katowice,42504/">CITY TRAIL onTour
+                                Katowice</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-07-26</td>
+                    </tr>
+                    <tr class='row2 Zawody'>
+                        <td>#100
+                        <td class='taken'>
+
+
+
+                        </td>
+                        <td class='nr'>—</td>
+                        <td class='yob'>—</td>
+                        <td class='place'>
+
+
+
+
+
+
+
+
+
+                            <img title="3 miejsce i brązowy medal. Gratulacje !"
+                                alt="3rd place and gold medal. Congratulations ! "
+                                src="https://static.enduhub.com/medals/bronze/res/mipmap-hdpi/ic_launcher.png" />
+
+
+                            <p class="centered-text">
+                                3
+                            </p>
+                        </td>
+                        <td class='name'><a
+                                href="/pl/dawid-pawel-wojcik/koncowy-wynik/parkrun-chrzanow-183-bieganie-5-km,chrzanow,2018,42168,9527011/">Dawid
+                                Paweł Wójcik</a></td>
+                        <td class='best'>00:18:38</td>
+                        <td class='event'>
+
+                            <a href="/pl/wyniki/2018/07/21/bieganie/parkrun-chrzanow-183,42168/">Parkrun Chrzanow
+                                #183</a>
+
+                        </td>
+                        <td class='distance'>5 km</td>
+                        <td class='sport'>Bieganie</td>
+                        <td class='date'>2018-07-21</td>
+                    </tr>
+
+
+
+                </tbody>
+
+
+            </table>
+
+
+
+
+
+
+            <div class="pagination pagination-centered pagination-large">
+                <ul class="pages">
+
+                    <li>
+                        <a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=1">&laquo; pierwsza</a>
+                    </li>
+
+
+
+                    <li class="active"><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=1">1<span
+                                class="sr-only"></span></a></li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=2">2<span class="sr-only"></span></a>
+                    </li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=3">3<span class="sr-only"></span></a>
+                    </li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=4">4<span class="sr-only"></span></a>
+                    </li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=5">5<span class="sr-only"></span></a>
+                    </li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=6">6<span class="sr-only"></span></a>
+                    </li>
+
+                    <li class=""><a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=7">7<span class="sr-only"></span></a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="?name=pawe%C5%82+w%C3%B3jcik&amp;page=7">ostatnia &raquo;</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Modal -->
+
+
+
+
+    <div class="footerbar">
+        <ul class="footerbar">
+
+            <li><a href="/pl/endu/help/">Help</a><span class="divider">|</span></li>
+            <li><a href="/pl/regulamin/">Regulamin</a><span class="divider">|</span></li>
+            <li><a href="/pl/polityka-prywatnosci/">Polityka prywatności</a><span class="divider">|</span></li>
+            <!--  <li><a href="/pl/bezpiecze%C5%84stwo/">Bezpieczeństwo</a><span class="divider">|</span></li> -->
+            <li><a href="/pl/o-nas/">O nas</a><span class="divider">|</span></li>
+            <li><a href="/pl/kontakt/">Kontakt</a><span class="divider">|</span></li>
+            <li><a href="/pl/dodaj/nowe-wyniki/">Zgłoś wyniki</a><span class="divider">|</span></li>
+            <li><a href="/pl/usu%C5%84/moje/dane/">Usuń moje dane</a><span class="divider">|</span></li>
+            <li><a href="/pl/newsletter/">Newsletter</a><span class="divider">|</span></li>
+            <li><a href="/newsletter/masz-pomysl-na-aplikacje-fitness-skorzystaj-z-enduhub-api/">API</a><span
+                    class="divider">|</span></li>
+            <li><a href="/newsletter/buduj-z-nami-enduhub-prawdopodobnie-najwieksza-baze-wynikow-w-necie/" </a>Buduj z
+                    nami Enduhub <span class="divider">|</span></li>
+            <li><a href="/pl/sponsored/results/" </a>Wyniki sponsorowane</li> <!-- Language field -->
+
+
+
+
+                    <a href="/en/">
+            <li class="pull-right flag flag-en"></li></a>
+
+
+
+            <a href="/pl/">
+                <li class="pull-right flag flag-pl"></li>
+            </a>
+
+
+
+            <a href="/es/">
+                <li class="pull-right flag flag-es"></li>
+            </a>
+
+
+            <li class="pull-right"><a href="#">(c) 2019</a>&nbsp; &nbsp;</li>
+        </ul>
+
+
+
+
+        <div class="recommended">
+            <h6>Polecane zawody :</h6>
+        </div>
+        <ul class="footerbar">
+
+            <li title="Poznan półmaraton"><a href="/pl/strona-zawodow/poznan-polmaraton,2/">Poznan półmaraton</a><span
+                    class="divider">|</span></li>
+
+            <li title="Poznań maraton"><a href="/pl/strona-zawodow/poznan-maraton,12/">Poznań maraton</a><span
+                    class="divider">|</span></li>
+
+            <li title="Maraton Warszawski"><a href="/pl/strona-zawodow/maraton-warszawski,20/">Maraton
+                    Warszawski</a><span class="divider">|</span></li>
+
+            <li title="Półmaraton Warszawski"><a href="/pl/strona-zawodow/polmaraton-warszawski,22/">Półmaraton
+                    Warszawski</a><span class="divider">|</span></li>
+
+            <li title="Cracovia Maraton"><a href="/pl/strona-zawodow/cracovia-maraton,29/">Cracovia Maraton</a><span
+                    class="divider">|</span></li>
+
+            <li title="Wrocław Maraton"><a href="/pl/strona-zawodow/wroclaw-maraton,41/">Wrocław Maraton</a><span
+                    class="divider">|</span></li>
+
+            <li title="Maraton Dębno"><a href="/pl/strona-zawodow/maraton-debno,46/">Maraton Dębno</a><span
+                    class="divider">|</span></li>
+
+        </ul>
+
+
+
+
+        <div class="recommended">
+            <h6>Mobile :</h6>
+        </div>
+        <p>
+            <a
+                href='https://play.google.com/store/apps/details?id=com.enduhub.enduhubmobile&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img
+                    alt='Google Play' width="200px"
+                    src='https://play.google.com/intl/en_us/badges/images/generic/pl_badge_web_generic.png' /></a>
+        </p>
+
+        <div class="recommended">
+            <h6>Partnerzy :</h6>
+        </div>
+
+        <p class="center-text">
+            <a href="/" title="zawody & wyniki w jednym miejscu"><img
+                    alt="wyniki sporty wytrzymałośćiowe, bieganie, kolarstwo, MTB, triatlon, pływanie, duathlon, maraton, multisport"
+                    src="https://static.enduhub.com//endupac60.png"></a>
+            <a href="https://www.poznanbiega.pl" title="Polecamy stronę o biegach w Wielkopolsce: PoznanBiega.pl"><img
+                    alt="poznanbiega.pl" src=https://static.enduhub.com/poznanbiegapl150.png> </a> <!-- <a
+                    href="http://tritour.com.pl/" title="Tritour - cykl imprez triathlonowych"><img
+                    alt="http://tritour.pl" src=https://static.enduhub.com/tritour.png
+                    style='padding:5px;width:200px;'></a>
+            -->
+            <a href="http://www.cityzenklub.pl" title="CityZen więcej niż klub sportowy"><img
+                    alt="http://www.cityzenklub.pl" src=https://static.enduhub.com/beefree_cityzen.png
+                    style='padding:5px;width:150px;'></a>
+            <!--  <a href="https://www.facebook.com/CrossFitRankor" alt="CrossFit Rankor Poznan" title="CrossFit Rankor Poznan"><img alt="https://www.facebook.com/CrossFitRankor.pl" src=https://static.enduhub.com/rankor.png></a>      -->
+            <a href="http://12tri.pl" alt="12tri" title="12tri"><img alt="http://12tri.pl"
+                    src=https://static.enduhub.com/12tri_horizontal.png> </a> <!-- <a href='http://3xjanusz.pl'
+                    target='_blank' title='3xJanusz - Profesjonalny amatorski blog o triathlonie'><img
+                    src='http://3xjanusz.pl/reklama_3.png' alt='3xJanusz - Profesjonalny amatorski blog o triathlonie'
+                    style='border:0;width:150px;' /></a> -->
+            <a href='http://ligabiegowa.pl' target='_blank' title='liga biegowa'><img
+                    src='https://static.enduhub.com/LB_logo200px.png' alt='ligabiegowa.pl' /></a>
+            <a href="/" title="zawody & wyniki w jednym miejscu"><img alt="zawody & wyniki w jednym miejscu"
+                    src="https://static.enduhub.com//endupac60.png"></a>
+        </p>
+    </div>
+
+
+
+    <div id="analitycs">
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-36231251-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+    </div>
+
+
+    <!-- cookie info -->
+
+
+    <div class="alert alert-block alert-info fade in">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <p>Ta strona używa Cookies. Dowiedz się więcej o celu ich używania - przeczytaj naszą politykę
+            prywatności.Korzystając ze strony wyrażasz zgodę na używanie cookie, zgodnie z aktualnymi ustawieniami
+            przeglądarki.</p>
+        <a class="btn btn-info inline-get" href="/pl/cookie/privacy/accept/">enduhub.com jest thebeściak więc się
+            zgadzam !</a>
+        <a href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+
+
+
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- [if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+
+    <!-- Localization for javascript needs to be included as well. Django supports JS localization but it I was unable to make it work -->
+    <script>
+        var ready = 'Proszę czekać ......';
+        var error = 'Błąd podczas przetwarzania ! Proszę spróbuj ponownie.';
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://static.enduhub.com/enduhub.min.js?v=2"></script>
+
+
+    <!-- Load jquery and stick datapicker to #datapicker id. -->
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $.datepicker.setDefaults($.datepicker.regional['pl']);
+            });
+            $(function () {
+                $("#datepicker").datepicker($.datepicker.regional['pl']);
+            });
+            $(function () {
+                $('#enduModal').modal();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            if (!localStorage.mission) {
+                $('.alert-welcome-box').show('fast');
+            }
+            $('.welcome-alert-button').click(function () {
+                localStorage.mission = 1;
+                $.ajax
+                    ({
+                        url: "/pl/endu/mission/accept/",
+                        method: 'POST',
+                    });
+            });
+        });
+    </script>
+
+    <!-- Responsive full screen background script -->
+    <script>
+        /* fix vertical when not overflow
+           call fullscreenFix() if .fullscreen content changes */
+        function fullscreenFix() {
+            var h = $('body').height();
+            // set .fullscreen height
+            $(".content-b").each(function (i) {
+                if ($(this).innerHeight() <= h) {
+                    $(this).closest(".fullscreen").addClass("not-overflow");
+                }
+            });
+        }
+        $(window).resize(fullscreenFix);
+        fullscreenFix();
+
+        /* resize background images */
+        function backgroundResize() {
+            var windowH = $(window).height();
+            $(".background").each(function (i) {
+                var path = $(this);
+                // variables
+                var contW = path.width();
+                var contH = path.height();
+                var imgW = path.attr("data-img-width");
+                var imgH = path.attr("data-img-height");
+                var ratio = imgW / imgH;
+                // overflowing difference
+                var diff = parseFloat(path.attr("data-diff"));
+                diff = diff ? diff : 0;
+                // remaining height to have fullscreen image only on parallax
+                var remainingH = 0;
+                if (path.hasClass("parallax")) {
+                    var maxH = contH > windowH ? contH : windowH;
+                    remainingH = windowH - contH;
+                }
+                // set img values depending on cont
+                imgH = contH + remainingH + diff;
+                imgW = imgH * ratio;
+                // fix when too large
+                if (contW > imgW) {
+                    imgW = contW;
+                    imgH = imgW / ratio;
+                }
+                //
+                path.data("resized-imgW", imgW);
+                path.data("resized-imgH", imgH);
+                path.css("background-size", imgW + "px " + imgH + "px");
+            });
+        }
+        $(window).resize(backgroundResize);
+        $(window).focus(backgroundResize);
+        backgroundResize();
+    </script>
+    <!-- End of responsive full screen backgriund script -->
+
+    <script type="application/ld+json">
+	 {
+	     "@context": "http://schema.org",
+	     "@type": "WebSite",
+	     "url": "https://www.enduhub.com/",
+	     "potentialAction": {
+		 "@type": "SearchAction",
+		 "target": "https://enduhub.com/pl/search/?name={search_term_string}",
+		 "query-input": "required name=search_term_string"
+	     }
+	 }
+	</script>
+
+</body>
+
+</html>
