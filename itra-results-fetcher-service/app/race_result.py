@@ -4,6 +4,7 @@ from datetime import timedelta
 class RaceResult:
     """Race result representation"""
 
+    # TODO remove it and send this funcionality to race-service
     def __init__(self, **kwargs):
         self.name = kwargs.get("name")
         self.time = kwargs.get("time")
