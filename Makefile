@@ -1,6 +1,7 @@
 PROJECT_DIR_NAME:=management_django_service
 ENTER_DJANGO:=docker-compose exec djangoweb
 ENTER_RESULTS:=docker-compose exec resultapi
+ENTER_RUNNER:=docker-compose exec runnerapi
 ENTER_ITRA:=docker-compose exec itrafetcher
 ENTER_ENDU:=docker-compose exec enduhubfetcher
 ENTER_ITRA_REDIS:=docker-compose exec itra_redis_cache
@@ -22,6 +23,10 @@ enter: ## enter the Django container (want to play freely with manage.py command
 
 enter_results: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_RESULTS) sh
+
+enter_runner: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
+	$(ENTER_RUNNER) sh
+
 enter_itra: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_ITRA) sh
 
@@ -43,6 +48,9 @@ test_itra:
 	$(ENTER_ITRA) sh -c "pytest -v -s"	
 
 test_endu:
+	$(ENTER_ENDU) sh -c "pytest -v -s"	
+
+test_runner:
 	$(ENTER_ENDU) sh -c "pytest -v -s"	
 
 db_results:

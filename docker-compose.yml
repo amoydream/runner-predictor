@@ -76,6 +76,24 @@ services:
     depends_on:
       - db_race_results
   
+  runnerapi:
+    build: ./runner-results-service
+    command: >
+        sh -c "python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./runner-results-service:/django_code
+    ports:
+      - "8002:8000"
+    environment: 
+      - DB_HOST=db_race_results
+      - DB_NAME=db_race_results
+      - DB_USER=postgres_user
+      - DB_PASS=supersecret
+    restart: on-failure  
+    depends_on:
+      - db_runner_results
+      
   
   
   
@@ -96,7 +114,16 @@ services:
       - POSTGRES_USER=postgres_user
       - POSTGRES_PASSWORD=supersecret
     volumes:
-      - ./postgres-data-race-results:/var/lib/postgresql/data          
+      - ./postgres-data-race-results:/var/lib/postgresql/data 
+  
+  db_runner_results:
+    image: postgres:11-alpine
+    environment: 
+      - POSTGRES_DB=db_runner_results
+      - POSTGRES_USER=postgres_user
+      - POSTGRES_PASSWORD=supersecret
+    volumes:
+      - ./postgres-data-runner-results:/var/lib/postgresql/data              
 
 volumes:
   postgres_data:      
