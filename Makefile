@@ -2,6 +2,7 @@ PROJECT_DIR_NAME:=management_django_service
 ENTER_DJANGO:=docker-compose exec djangoweb
 ENTER_RESULTS:=docker-compose exec resultapi
 ENTER_ITRA:=docker-compose exec itrafetcher
+ENTER_ENDU:=docker-compose exec enduhubfetcher
 ENTER_ITRA_REDIS:=docker-compose exec itra_redis_cache
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
@@ -24,6 +25,9 @@ enter_results: ## enter the Django container (want to play freely with manage.py
 enter_itra: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_ITRA) sh
 
+enter_endu: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
+	$(ENTER_ENDU) sh
+
 enter_itra_redis: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_ITRA_REDIS) sh
 
@@ -37,6 +41,9 @@ test_results:
 
 test_itra:
 	$(ENTER_ITRA) sh -c "pytest -v -s"	
+
+test_endu:
+	$(ENTER_ENDU) sh -c "pytest -v -s"	
 
 db_results:
 	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results

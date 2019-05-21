@@ -49,7 +49,14 @@ services:
       - itra_redis_cache
 
 
-
+  enduhubfetcher:
+    build: ./enduhub-fetcher-service
+    command: >
+        sh -c "flask run --host=0.0.0.0"
+    volumes:
+      - ./enduhub-fetcher-service:/flask_code
+    ports:
+      - 5001:5000
 
   resultapi:
     build: ./race-service
