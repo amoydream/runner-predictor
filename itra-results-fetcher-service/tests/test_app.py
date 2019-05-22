@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 from app.itra_fetcher import ItraRaceResultsFetcher, ItraRunnerYearFetcher
 from app.race_result import RaceResult
-from app.intra_result_sender import ItraResultSender
+from app.itra_result_sender import ItraResultSender
 
 
 @patch("app.app.fetch_data_from_itra.delay")
@@ -17,7 +17,7 @@ def test_sample_post(mock, client):
     rv = client.post("/", json=data)
     json_data = rv.get_json()
 
-    assert json_data == "run que"
+    assert json_data == "Add to que"
 
 
 @patch("app.itra_fetcher.ItraRunnerYearFetcher.download_data")

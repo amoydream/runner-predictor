@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 from .flask_celery import make_celery
 from .itra_fetcher import ItraRaceResultsFetcher
-from .intra_result_sender import ItraResultSender
+from .itra_result_sender import ItraResultSender
 
 flask_app = Flask(__name__)
 api = Api(flask_app)
