@@ -86,8 +86,8 @@ services:
     ports:
       - "8002:8000"
     environment: 
-      - DB_HOST=db_race_results
-      - DB_NAME=db_race_results
+      - DB_HOST=db_runner_results
+      - DB_NAME=db_runner_results
       - DB_USER=postgres_user
       - DB_PASS=supersecret
     restart: on-failure  
