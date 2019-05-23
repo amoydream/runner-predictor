@@ -51,7 +51,7 @@ test_endu:
 	$(ENTER_ENDU) sh -c "pytest -v -s"	
 
 test_runner:
-	$(ENTER_ENDU) sh -c "pytest -v -s"	
+	$(ENTER_RUNNER) sh -c "pytest -v -s"	
 
 db_results:
 	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results
