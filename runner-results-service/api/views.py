@@ -1,16 +1,41 @@
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework_extensions.mixins import NestedViewSetMixin
+from rest_framework.decorators import action
 from api import serializers
 from rest_framework import status
 from api.models import Runner, RaceResult
 
 
 class RunnerViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    """Manage Race in the database"""
+    """Manage runner in the database"""
 
     queryset = Runner.objects.all()
     serializer_class = serializers.RunnerSerializer
+
+    @action(detail=False, methods=["post"])
+    def get_or_create(self, request):
+        try:
+            runner = Runner.objects.get(
+                name=request.data["name"],
+                birth_year=request.data["birth_year"],
+            )
+            serializer = serializers.RunnerSerializer(runner)
+            headers = self.get_success_headers(serializer.data)
+            return Response(
+                serializer.data, status=status.HTTP_200_OK, headers=headers
+            )
+        except ObjectDoesNotExist:
+            serializer = serializers.RunnerSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            headers = self.get_success_headers(serializer.data)
+            return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED,
+                headers=headers,
+            )
 
 
 class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
