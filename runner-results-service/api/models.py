@@ -10,6 +10,9 @@ class Runner(models.Model):
     def __str__(self):
         return "{}, {}".format(self.name, self.birth_year)
 
+    class Meta:
+        unique_together = ["name", "birth_year"]
+
 
 def correct_birth_year(sender, instance, **kwargs):
     """Change short year date to full format"""
@@ -17,12 +20,12 @@ def correct_birth_year(sender, instance, **kwargs):
         instance.birth_year = "19" + str(instance.birth_year)
 
 
-def pre_save_handler(sender, instance, *args, **kwargs):
+def pre_save_validation(sender, instance, *args, **kwargs):
     instance.full_clean()
 
 
 pre_save.connect(correct_birth_year, sender=Runner)
-pre_save.connect(pre_save_handler, sender=Runner)
+pre_save.connect(pre_save_validation, sender=Runner)
 
 
 class RaceResult(models.Model):
