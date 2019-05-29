@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from app.enduhub_fetcher import EnduhubFetcher
+from app.enduhub_result_sender import EnduhubResultSender
 
 
 def test_enduhub_fetcher_object_init():
@@ -39,3 +40,17 @@ def test_enduhub_fetcher_fetch_results(
     results = endu.fetch_results()
     first_results_on_list = results[0]
     assert first_results_on_list["race_date"] == "2019-05-16"
+    assert first_results_on_list["race_type"] == "Bieganie"
+
+
+def test_endhub_result_sender_init(dict_results):
+    enduhub = EnduhubResultSender(dict_results)
+    assert isinstance(enduhub, EnduhubResultSender)
+
+
+def test_endhub_result_sender_send_data(dict_results):
+    enduhub = EnduhubResultSender(dict_results)
+    res = enduhub.send_data()
+
+    assert res.status_code == 201
+

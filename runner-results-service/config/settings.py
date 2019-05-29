@@ -25,7 +25,7 @@ SECRET_KEY = "fid%81)z^&#au#icy%!)ax5_h#(mrc&f%yc2^=f1(ixeeouu+("
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["runnerapi", "localhost"]
 
 
 # Application definition

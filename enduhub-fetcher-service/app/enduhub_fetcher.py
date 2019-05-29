@@ -27,6 +27,8 @@ class EnduhubFetcher:
                 result_of_the_race = row.find("td", class_="best").get_text()
                 race_type = row.find("td", class_="sport").get_text()
                 race_result = dict(
+                    runner_name=self.runner_name,
+                    birth_year=self.birth_year,
                     race_name=event_name,
                     distance=distance,
                     race_date=race_date,
