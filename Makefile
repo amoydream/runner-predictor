@@ -45,13 +45,13 @@ test_results:
 	$(ENTER_RESULTS) sh -c "python manage.py test && flake8"
 
 test_itra:
-	$(ENTER_ITRA) sh -c "pytest -v -s"	
+	$(ENTER_ITRA) sh -c "pytest -v -s -x"	
 
 test_endu:
-	$(ENTER_ENDU) sh -c "pytest -v -s"	
+	$(ENTER_ENDU) sh -c "pytest -v -s -x"	
 
 test_runner:
-	$(ENTER_RUNNER) sh -c "pytest -v -s"	
+	$(ENTER_RUNNER) sh -c "pytest -v -s -x"	
 
 db_results:
 	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results
