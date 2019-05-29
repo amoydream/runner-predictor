@@ -45,3 +45,53 @@ class TestRunnerApi:
         assert res.status_code == status.HTTP_201_CREATED
         res2 = client.post(endpoint, payload)
         assert res2.status_code == status.HTTP_200_OK
+
+    def test_race_result_creation(self, client):
+        """Test creation of race result"""
+        runner = RunnerFactory.create()
+        r_url = reverse("api:race-results-list", args=[runner.id])
+        payload = {
+            "event_name": "Wielka prehyba",
+            "distance": "43.5",
+            "race_date": "2019-04-27",
+            "result_of_the_race": "06:30:29",
+            "race_type": "bieg górski",
+        }
+
+        res = client.post(r_url, payload)
+        print(res.content)
+        assert res.status_code == status.HTTP_201_CREATED
+
+    def test_race_result_creation_with_km(self, client):
+        """Test creation of race result -  distance with km"""
+        runner = RunnerFactory.create()
+        r_url = reverse("api:race-results-list", args=[runner.id])
+        payload = {
+            "event_name": "Wielka prehyba",
+            "distance": "64.5 km",
+            "race_date": "2019-04-27",
+            "result_of_the_race": "06:30:29",
+            "race_type": "bieg górski",
+        }
+
+        res = client.post(r_url, payload)
+        print(res.content)
+        assert res.status_code == status.HTTP_201_CREATED
+        assert res.data["distance"] == "64.5"
+
+    def test_race_result_creation_with_maraton(self, client):
+        """Test creation of race result -  distance with maraton string"""
+        runner = RunnerFactory.create()
+        r_url = reverse("api:race-results-list", args=[runner.id])
+        payload = {
+            "event_name": "Wielka prehyba",
+            "distance": "maraton",
+            "race_date": "2019-04-27",
+            "result_of_the_race": "06:30:29",
+            "race_type": "bieg górski",
+        }
+
+        res = client.post(r_url, payload)
+        print(res.content)
+        assert res.status_code == status.HTTP_201_CREATED
+        assert res.data["distance"] == "42.1"

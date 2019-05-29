@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.db.models.signals import pre_save
+import re
 
 
 class Runner(models.Model):
@@ -39,3 +40,19 @@ class RaceResult(models.Model):
     race_date = models.DateField()
     result_of_the_race = models.DurationField()
     race_type = models.CharField(max_length=300)
+
+
+def correct_distance(sender, instance, **kwargs):
+    """Clean distance input"""
+    str_distance = str(instance.distance).strip()
+    find_digit = re.match(r"\d+\.*\d*", str_distance)
+    if find_digit:
+        result = find_digit.group()
+        instance.distance = float(result)
+    elif str_distance == "maraton":
+        instance.distance = 42.1
+    elif str_distance in ["połmaraton", "polmaraton", "półmaraton"]:
+        instance.distance = 21.05
+
+
+pre_save.connect(correct_distance, sender=RaceResult)

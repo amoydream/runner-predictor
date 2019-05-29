@@ -26,9 +26,19 @@ class RunnerSerializer(serializers.ModelSerializer):
 class RaceResultSerializer(serializers.ModelSerializer):
     """Serializer for race_result objects"""
 
+    distance = serializers.CharField(max_length=10)
+
     class Meta:
         model = RaceResult
-        fields = ("id", "race", "runner_name", "runner_birth", "time_result")
+        fields = (
+            "id",
+            "runner",
+            "event_name",
+            "distance",
+            "race_date",
+            "result_of_the_race",
+            "race_type",
+        )
         read_only_field = ("id", "runner")
         validators = [
             UniqueTogetherValidator(
