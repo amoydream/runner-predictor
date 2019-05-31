@@ -19,13 +19,8 @@ class EnduhubResultSender:
                 "result_of_the_race": self.data["result_of_the_race"],
                 "race_type": self.data["race_type"],
             }
-            breakpoint()
-            link_template = "http://runnerapi:8000/api/runners/{}/race_results/".format(
-                runner["id"]
-            )
-            r = requests.post(link_template, race_payload)
-            print(r.content)
-            return r
+
+            return self.__send_result(race_payload, runner)
 
     def __get_runner(self):
         runner_payload = {
@@ -36,3 +31,12 @@ class EnduhubResultSender:
             "http://runnerapi:8000/api/runners/get_or_create/", runner_payload
         )
         return r
+
+    def __send_result(self, race_payload, runner):
+        link_template = "http://runnerapi:8000/api/runners/{}/race_results/".format(
+            runner["id"]
+        )
+        r = requests.post(link_template, race_payload)
+        print(r.json_data)
+        return r
+

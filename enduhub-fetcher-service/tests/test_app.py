@@ -48,9 +48,27 @@ def test_endhub_result_sender_init(dict_results):
     assert isinstance(enduhub, EnduhubResultSender)
 
 
-def test_endhub_result_sender_send_data(dict_results):
+def mocked_requests_post(*args, **kwargs):
+    class MockResponse:
+        def __init__(self, json_data, status_code):
+            self.json_data = json_data
+            self.status_code = status_code
+
+        def json(self):
+            return self.json_data
+
+    if "get_or_create" in args[0]:
+        return MockResponse({"id": "1"}, 200)
+
+    if "race_results" in args[0]:
+        return MockResponse({"id": "1"}, 200)
+
+
+@patch(
+    "app.enduhub_result_sender.requests.post", side_effect=mocked_requests_post
+)
+def test_endhub_result_sender_send_data(mocker, dict_results):
     enduhub = EnduhubResultSender(dict_results)
     res = enduhub.send_data()
-
-    assert res.status_code == 201
+    assert res.status_code == 200
 
