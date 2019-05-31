@@ -1,7 +1,11 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.db.models.signals import pre_save
+
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Runner(models.Model):
@@ -49,10 +53,13 @@ def correct_distance(sender, instance, **kwargs):
     if find_digit:
         result = find_digit.group()
         instance.distance = float(result)
+
     elif str_distance == "maraton":
         instance.distance = 42.1
     elif str_distance in ["połmaraton", "polmaraton", "półmaraton"]:
         instance.distance = 21.05
+
+    logger.info(f"Disnance converted {str_distance} to {instance.distance}")
 
 
 pre_save.connect(correct_distance, sender=RaceResult)
