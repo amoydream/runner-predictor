@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from .birth_year import BirthYear
 
 
 class EnduhubFetcher:
@@ -16,7 +17,9 @@ class EnduhubFetcher:
         return "{}, {}".format(self.runner_name, self.birth_year)
 
     def fetch_results(self):
+        print("start", self.number_of_pages)
         for page in range(1, self.number_of_pages + 1):
+            print("page", page)
             content = self.download_page(page)
             soup = BeautifulSoup(content, "html.parser")
             for row in soup.find_all("tr", class_="Zawody"):
@@ -28,15 +31,20 @@ class EnduhubFetcher:
                 race_type = row.find("td", class_="sport").get_text()
                 race_result = dict(
                     runner_name=self.runner_name,
-                    birth_year=self.birth_year,
+                    runner_birth=self.birth_year,
                     race_name=event_name,
                     distance=distance,
                     race_date=race_date,
-                    runner_birth=runner_birth,
                     result_of_the_race=result_of_the_race,
                     race_type=race_type,
                 )
-                self.race_results.append(race_result)
+                try:
+                    equal_year = self.birth_year == BirthYear(runner_birth)
+                except ValueError:
+                    continue
+                else:
+                    if equal_year:
+                        self.race_results.append(race_result)
 
         return self.race_results
 
@@ -48,12 +56,14 @@ class EnduhubFetcher:
         pagination_li_a = soup.select(".pagination .pages li a")
         uniq_links = set([a_tag["href"] for a_tag in pagination_li_a])
         self.number_of_pages = len(uniq_links)
+        if len(uniq_links) == 0:
+            self.number_of_pages = 1
 
     def download_page(self, page):
         page_content = self.pages_content.get(page)
         if page_content:
             return page_content
         link_template = "https://enduhub.com/pl/search/?name={}&page={}"
-        print("prepare_donwload", link_template)
         r = requests.get(link_template.format(self.runner_name, page))
         return r.content
+

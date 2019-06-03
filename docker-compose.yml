@@ -34,6 +34,11 @@ services:
     image: redis
     expose:
       - 6379      
+  
+  endu_redis_cache:
+    image: redis
+    expose:
+      - 6379      
 
   celery_worker_1:
     build:
@@ -47,7 +52,19 @@ services:
       - itra_redis_cache
     depends_on:
       - itra_redis_cache
-
+  
+  celery_worker_2:
+    build:
+      context: ./enduhub-fetcher-service
+    hostname: worker_2
+    entrypoint: celery
+    command: -A  app.app.celery worker 
+    volumes:
+      - ./enduhub-fetcher-service:/flask_code
+    links:
+      - endu_redis_cache
+    depends_on:
+      - endu_redis_cache    
 
   enduhubfetcher:
     build: ./enduhub-fetcher-service

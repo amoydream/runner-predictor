@@ -37,6 +37,5 @@ class EnduhubResultSender:
             runner["id"]
         )
         r = requests.post(link_template, race_payload)
-        print(r.json_data)
         return r
 
