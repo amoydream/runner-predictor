@@ -106,3 +106,11 @@ class CrudRaceResultTests(TestCase):
         serializer = RaceResultSerializer(race_results, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
+
+    def test_donwload_enduhub(self):
+        race = RaceFactory.create()
+        RaceResultFactory.create(race=race)
+        endpoint = reverse("api:race-download-enduhub-data")
+        payload = dict(race_id=race.id)
+        res = self.client.post(endpoint, payload)
+        assert res.status_code == status.HTTP_201_CREATED

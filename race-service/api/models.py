@@ -1,4 +1,5 @@
 from django.db import models
+import requests
 
 # TODO add RaceGroup model: grouping te same events year by years
 
@@ -16,6 +17,10 @@ class Race(models.Model):
     time_limit = models.DecimalField(
         max_digits=10, decimal_places=1, null=True, blank=True
     )
+
+    def download_from_enduhub(self):
+        for race_result in self.race_results.all():
+            race_result.download_from_enduhub()
 
     class Meta:
         ordering = ["-start_date"]
@@ -40,6 +45,11 @@ class RaceResult(models.Model):
     runner_name = models.CharField(max_length=300)
     runner_birth = models.PositiveIntegerField()
     time_result = models.DurationField()
+
+    def download_from_enduhub(self):
+        payload = {"name": self.runner_name, "birth": self.runner_birth}
+        r = requests.post("http://enduhubfetcher:5000/", json=payload)
+        return r.content
 
     def __str__(self):
         str_repr = (

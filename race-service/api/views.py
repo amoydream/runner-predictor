@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework_extensions.mixins import NestedViewSetMixin
 from api import serializers
 from rest_framework import status
+from rest_framework.decorators import action
 from api.models import Race, RaceResult
 
 
@@ -11,6 +12,12 @@ class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
     queryset = Race.objects.all()
     serializer_class = serializers.RaceSerializer
+
+    @action(detail=False, methods=["post"])
+    def download_enduhub_data(self, request):
+        race = Race.objects.get(pk=request.data["race_id"])
+        race.download_from_enduhub()
+        return Response("Send to download", status=status.HTTP_201_CREATED)
 
 
 class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -29,3 +36,4 @@ class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         return Response(
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
+
