@@ -45,6 +45,12 @@ class RaceResult(models.Model):
     result_of_the_race = models.DurationField()
     race_type = models.CharField(max_length=300)
 
+    class Meta:
+        ordering = ["-race_date"]
+
+    def __str__(self):
+        return f"{self.race_date}, {self.event_name}, {self.distance} km, {self.result_of_the_race}, {self.race_type}"
+
 
 def correct_distance(sender, instance, **kwargs):
     """Clean distance input"""
@@ -54,9 +60,9 @@ def correct_distance(sender, instance, **kwargs):
         result = find_digit.group()
         instance.distance = float(result)
 
-    elif str_distance == "maraton":
+    elif str_distance.lower() == "maraton":
         instance.distance = 42.1
-    elif str_distance in ["połmaraton", "polmaraton", "półmaraton"]:
+    elif str_distance.lower() in ["połmaraton", "polmaraton", "półmaraton"]:
         instance.distance = 21.05
 
     logger.info(f"Disnance converted {str_distance} to {instance.distance}")

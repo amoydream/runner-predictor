@@ -23,6 +23,17 @@ class RunnerSerializer(serializers.ModelSerializer):
         return runner
 
 
+class RunnerDetailSerializer(serializers.ModelSerializer):
+    """Serializer for detailed view runner objects"""
+
+    race_results = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = Runner
+        fields = ("id", "name", "birth_year", "race_results")
+        read_only_field = ("id", "race_results")
+
+
 class RaceResultSerializer(serializers.ModelSerializer):
     """Serializer for race_result objects"""
 

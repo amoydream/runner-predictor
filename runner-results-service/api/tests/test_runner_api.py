@@ -21,6 +21,11 @@ class TestRunnerApi:
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_201_CREATED
 
+    def test_runner_creation_birth_strange(self, client):
+        payload = dict(name="Michal Mojek", birth_year="—")
+        res = client.post(RUNNERS_URL, payload)
+        assert res.status_code == status.HTTP_400_BAD_REQUEST
+
     def test_runner_creation_with_to_lower_date(self, client):
         payload = dict(name="Michał Mojek", birth_year=1800)
         res = client.post(RUNNERS_URL, payload)
@@ -45,6 +50,12 @@ class TestRunnerApi:
         assert res.status_code == status.HTTP_201_CREATED
         res2 = client.post(endpoint, payload)
         assert res2.status_code == status.HTTP_200_OK
+
+    def test_get_or_create_point_birth_error(self, client):
+        endpoint = reverse("api:runner-get-or-create")
+        payload = dict(name="Michał Mojek", birth_year="—")
+        res = client.post(endpoint, payload)
+        assert res.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_race_result_creation(self, client):
         """Test creation of race result"""

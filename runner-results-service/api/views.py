@@ -1,21 +1,32 @@
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework_extensions.mixins import NestedViewSetMixin
+from rest_framework_extensions.mixins import (
+    NestedViewSetMixin,
+    DetailSerializerMixin,
+)
 from rest_framework.decorators import action
 from api import serializers
 from rest_framework import status
 from api.models import Runner, RaceResult
 
 
-class RunnerViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+class RunnerViewSet(
+    DetailSerializerMixin, NestedViewSetMixin, viewsets.ModelViewSet
+):
     """Manage runner in the database"""
 
     queryset = Runner.objects.all()
     serializer_class = serializers.RunnerSerializer
+    serializer_detail_class = serializers.RunnerDetailSerializer
 
     @action(detail=False, methods=["post"])
     def get_or_create(self, request):
+        if not request.data["birth_year"].isnumeric():
+            return Response(
+                "Birth year is wrong format",
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         try:
             runner = Runner.objects.get(
                 name=request.data["name"],
