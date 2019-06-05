@@ -3,13 +3,13 @@ version: '3'
 services:
   
   djangoweb:
-    build: ./management_django_service
+    build: ./users-management-service
     command: >
         sh -c "python manage.py wait_for_db && 
                python manage.py migrate &&
                python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./management_django_service:/django_code
+      - ./users-management-service:/django_code
     ports:
       - "8000:8000"
     environment: 
@@ -74,6 +74,21 @@ services:
       - ./enduhub-fetcher-service:/flask_code
     ports:
       - 5001:5000
+
+  datapreparation:
+    build: ./data-preparation-service
+    command: >
+        sh -c "flask run --host=0.0.0.0"
+    volumes:
+      - ./data-preparation-service:/flask_code
+    ports:
+      - 5002:5000
+  
+  datapreparation_redis:
+    image: redis
+    expose:
+      - 6379      
+
 
   resultapi:
     build: ./race-service
