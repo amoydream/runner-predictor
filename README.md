@@ -2,6 +2,8 @@
 The Runner Predictor app provides a way to predict time results of mountain races.
 The runner provides basic information about himself, such as sex, age, and time of 10 kilometers and  choose the race and the app gives the approximate time of completion.
 
+All predictions are based on machine learning
+
 
 ![Drag Racing](race-predictor_system_view.png)
 
