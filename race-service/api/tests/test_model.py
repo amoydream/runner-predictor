@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 from .factories import RaceFactory, RaceResultFactory
+from api.models import RaceGroup
 
 
 class ModelTest(TestCase):
@@ -86,3 +87,9 @@ class ModelTest(TestCase):
                 runner_birth=1980,
                 time_result="6:20:45",
             )
+
+    def test_race_group_str(self):
+        race_group = RaceGroup(name="Wielka Prehyba")
+        race_group.save()
+        assert str(race_group) == "Wielka Prehyba"
+

@@ -4,7 +4,21 @@ import requests
 # TODO add RaceGroup model: grouping te same events year by years
 
 
+class RaceGroup(models.Model):
+    name = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
+
+
 class Race(models.Model):
+    race_group = models.ForeignKey(
+        RaceGroup,
+        on_delete=models.SET_NULL,
+        related_name="races",
+        null=True,
+        blank=True,
+    )
     name = models.CharField(max_length=256)
     start_date = models.DateField()
     distance = models.DecimalField(

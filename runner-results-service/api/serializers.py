@@ -1,18 +1,22 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
+
 from api.models import Runner, RaceResult
 from django.core.exceptions import ValidationError
 
 
-class RunnerSerializer(serializers.ModelSerializer):
+class RunnerSerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for runner objects"""
 
     birth_year = serializers.IntegerField()
+    url = serializers.HyperlinkedIdentityField(
+        read_only=True, view_name="api:runner-detail"
+    )
 
     class Meta:
         model = Runner
-        fields = ("id", "name", "birth_year")
-        read_only_field = ("id",)
+        fields = ("id", "name", "birth_year", "url")
+        read_only_field = ("id", "url")
 
     def create(self, validated_data):
         runner = Runner(**validated_data)

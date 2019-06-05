@@ -32,13 +32,17 @@ class RunnerViewSet(
                 name=request.data["name"],
                 birth_year=request.data["birth_year"],
             )
-            serializer = serializers.RunnerSerializer(runner)
+            serializer = serializers.RunnerSerializer(
+                runner, context={"request": request}
+            )
             headers = self.get_success_headers(serializer.data)
             return Response(
                 serializer.data, status=status.HTTP_200_OK, headers=headers
             )
         except ObjectDoesNotExist:
-            serializer = serializers.RunnerSerializer(data=request.data)
+            serializer = serializers.RunnerSerializer(
+                data=request.data, context={"request": request}
+            )
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             headers = self.get_success_headers(serializer.data)

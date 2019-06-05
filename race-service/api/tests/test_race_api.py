@@ -3,16 +3,34 @@ from django.test import TestCase
 
 from rest_framework import status
 from rest_framework.test import APIClient
-from api.models import Race
-from api.serializers import RaceSerializer, RaceResultSerializer
-from .factories import RaceFactory, RaceResultFactory
+from api.models import Race, RaceGroup
+from api.serializers import (
+    RaceSerializer,
+    RaceResultSerializer,
+    RaceGroupSerializer,
+)
+from .factories import RaceFactory, RaceResultFactory, RaceGroupFactory
 
 RACES_URL = reverse("api:race-list")
+RACE_GROUP_URL = reverse("api:racegroup-list")
+
+
+class CrudRaceGroupTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_retrive_group(self):
+        """Test retriving all races group"""
+        RaceGroupFactory.create(name="Wielka Prehyba")
+        RaceGroupFactory.create(name="Rzeźniczek")
+        res = self.client.get(RACE_GROUP_URL)
+        races = RaceGroup.objects.all()
+        serializer = RaceGroupSerializer(races, many=True)
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(res.data, serializer.data)
 
 
 class CrudRaceTests(TestCase):
-    """Test Crud operation on Race api"""
-
     def setUp(self):
         self.client = APIClient()
 
@@ -54,8 +72,6 @@ class CrudRaceTests(TestCase):
 
 
 class CrudRaceResultTests(TestCase):
-    """Test Crud operation on Race Result api"""
-
     def test_create_race_result(self):
         """Test creation of race result"""
         race = RaceFactory.create()

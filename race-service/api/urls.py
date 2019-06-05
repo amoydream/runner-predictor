@@ -17,8 +17,12 @@ router = NestedDefaultRouter()
         parents_query_lookups=["race"],
     )
 )
-
+router_not_nested = DefaultRouter()
+router_not_nested.register("race-group", views.RaceGroupViewSet)
 
 app_name = "api"
 
-urlpatterns = [path("", include(router.urls))]
+urlpatterns = [
+    path("", include(router.urls)),
+    path("", include(router_not_nested.urls)),
+]

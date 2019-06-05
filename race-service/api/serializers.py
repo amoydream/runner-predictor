@@ -1,15 +1,14 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
-from api.models import Race, RaceResult
+from api.models import Race, RaceResult, RaceGroup
 
 
 class RaceSerializer(serializers.ModelSerializer):
-    """Serializer for race objects"""
-
     class Meta:
         model = Race
         fields = (
             "id",
+            "race_group",
             "name",
             "start_date",
             "distance",
@@ -23,9 +22,18 @@ class RaceSerializer(serializers.ModelSerializer):
         read_only_field = ("id", "elevation_diff")
 
 
-class RaceResultSerializer(serializers.ModelSerializer):
-    """Serializer for race_result objects"""
+class RaceGroupSerializer(serializers.ModelSerializer):
+    races = serializers.HyperlinkedRelatedField(
+        many=True, view_name="api:race-detail", read_only=True
+    )
 
+    class Meta:
+        model = RaceGroup
+        fields = ("id", "name", "races")
+        read_only_field = ("id", "races")
+
+
+class RaceResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = RaceResult
         fields = ("id", "race", "runner_name", "runner_birth", "time_result")

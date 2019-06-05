@@ -4,7 +4,12 @@ from rest_framework_extensions.mixins import NestedViewSetMixin
 from api import serializers
 from rest_framework import status
 from rest_framework.decorators import action
-from api.models import Race, RaceResult
+from api.models import Race, RaceResult, RaceGroup
+
+
+class RaceGroupViewSet(viewsets.ModelViewSet):
+    queryset = RaceGroup.objects.all()
+    serializer_class = serializers.RaceGroupSerializer
 
 
 class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
