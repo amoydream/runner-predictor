@@ -4,6 +4,13 @@ from api.models import Race, RaceResult, RaceGroup
 
 
 class RaceSerializer(serializers.ModelSerializer):
+    race_results_url = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        view_name="api:race-results-list",
+        lookup_field="pk",
+        lookup_url_kwarg="parent_lookup_race",
+    )
+
     class Meta:
         model = Race
         fields = (
@@ -18,8 +25,10 @@ class RaceSerializer(serializers.ModelSerializer):
             "food_point",
             "time_limit",
             "elevation_diff",
+            "race_results_url",
         )
-        read_only_field = ("id", "elevation_diff")
+        read_only_field = ("id", "elevation_diff", "race_results_url")
+        # read_only_field = ("id", "elevation_diff")
 
 
 class RaceGroupSerializer(serializers.ModelSerializer):

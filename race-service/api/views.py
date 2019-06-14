@@ -13,7 +13,6 @@ class RaceGroupViewSet(viewsets.ModelViewSet):
 
 
 class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    """Manage Race in the database"""
 
     queryset = Race.objects.all()
     serializer_class = serializers.RaceSerializer
@@ -26,7 +25,6 @@ class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
 
 class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    """Manage RaceResult in the database"""
 
     queryset = RaceResult.objects.all()
     serializer_class = serializers.RaceResultSerializer
@@ -41,4 +39,3 @@ class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         return Response(
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
-

@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -40,7 +40,12 @@ class CrudRaceTests(TestCase):
         RaceFactory.create(name="Bieg 7 Dolin", start_date="2018-09-27")
         res = self.client.get(RACES_URL)
         races = Race.objects.all()
-        serializer = RaceSerializer(races, many=True)
+
+        serializer = RaceSerializer(
+            races,
+            many=True,
+            context={"request": RequestFactory().get(RACES_URL)},
+        )
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
@@ -70,6 +75,14 @@ class CrudRaceTests(TestCase):
         )
         self.assertEqual(payload["itra"], getattr(race, "itra"))
 
+    def test_race_results_url_endopoints_on_detail_race(self):
+        race = RaceFactory.create()
+        RaceResultFactory.create(race=race)
+        RaceResultFactory.create(race=race, runner_name="Some runner")
+        r_url = reverse("api:race-results-list", args=[race.id])
+        res = self.client.get(reverse("api:race-detail", args=[race.id]))
+        assert r_url in res.data["race_results_url"]
+
 
 class CrudRaceResultTests(TestCase):
     def test_create_race_result(self):
@@ -83,7 +96,6 @@ class CrudRaceResultTests(TestCase):
         }
 
         res = self.client.post(r_url, payload)
-        print(res.content)
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
 
     def test_create_race_results_failed_with_dupilactions(self):

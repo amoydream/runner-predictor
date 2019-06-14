@@ -92,4 +92,3 @@ class ModelTest(TestCase):
         race_group = RaceGroup(name="Wielka Prehyba")
         race_group.save()
         assert str(race_group) == "Wielka Prehyba"
-
