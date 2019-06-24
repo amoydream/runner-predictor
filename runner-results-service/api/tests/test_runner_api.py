@@ -10,29 +10,29 @@ RUNNERS_URL = reverse("api:runner-list")
 @pytest.mark.django_db
 class TestRunnerApi:
     def test_runner_creation_with_short_birth(self, client):
-        payload = dict(name="Michał Mojek", birth_year=80)
+        payload = dict(name="Michał Mojek", birth_year=80, sex="M")
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_201_CREATED
         runner = Runner.objects.get(id=res.data["id"])
         assert runner.birth_year == 1980
 
     def test_runner_creation(self, client):
-        payload = dict(name="Michał Mojek", birth_year=1980)
+        payload = dict(name="Michał Mojek", birth_year=1980, sex="M")
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_201_CREATED
 
     def test_runner_creation_birth_strange(self, client):
-        payload = dict(name="Michal Mojek", birth_year="—")
+        payload = dict(name="Michal Mojek", birth_year="—", sex="M")
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_runner_creation_with_to_lower_date(self, client):
-        payload = dict(name="Michał Mojek", birth_year=1800)
+        payload = dict(name="Michał Mojek", birth_year=1800, sex="M")
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_runner_creation_with_blank_birth(self, client):
-        payload = dict(name="Michał Mojek", birth_year="")
+        payload = dict(name="Michał Mojek", birth_year="", sex="M")
         res = client.post(RUNNERS_URL, payload)
         assert res.status_code == status.HTTP_400_BAD_REQUEST
 
@@ -45,7 +45,7 @@ class TestRunnerApi:
 
     def test_get_or_create_point(self, client):
         endpoint = reverse("api:runner-get-or-create")
-        payload = dict(name="Michał Mojek", birth_year=1980)
+        payload = dict(name="Michał Mojek", birth_year=1980, sex="M")
         res = client.post(endpoint, payload)
         assert res.status_code == status.HTTP_201_CREATED
         res2 = client.post(endpoint, payload)
@@ -53,7 +53,7 @@ class TestRunnerApi:
 
     def test_get_or_create_point_birth_error(self, client):
         endpoint = reverse("api:runner-get-or-create")
-        payload = dict(name="Michał Mojek", birth_year="—")
+        payload = dict(name="Michał Mojek", birth_year="—", sex="M")
         res = client.post(endpoint, payload)
         assert res.status_code == status.HTTP_400_BAD_REQUEST
 
@@ -106,3 +106,14 @@ class TestRunnerApi:
         print(res.content)
         assert res.status_code == status.HTTP_201_CREATED
         assert res.data["distance"] == "42.1"
+
+    def test_find_runner(self, client):
+        RunnerFactory.create(name="Michał Mojek", birth_year=1980, sex="M")
+        RunnerFactory.create(name="Jan Kowalski", birth_year=1979, sex="M")
+        RunnerFactory.create(name="Jan Kowalski", birth_year=1970, sex="M")
+        payload = dict(name="Michał Mojek", birth_year=1980)
+        res = client.get(RUNNERS_URL, payload)
+        assert res.status_code == status.HTTP_200_OK
+        assert len(res.data) == 1
+        res = client.get(RUNNERS_URL)
+        assert len(res.data) == 3
