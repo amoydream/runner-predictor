@@ -19,6 +19,7 @@ class RunnerViewSet(
     queryset = Runner.objects.all()
     serializer_class = serializers.RunnerSerializer
     serializer_detail_class = serializers.RunnerDetailSerializer
+    filterset_fields = ("name", "birth_year")
 
     @action(detail=False, methods=["post"])
     def get_or_create(self, request):
