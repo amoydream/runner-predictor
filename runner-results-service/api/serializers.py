@@ -15,7 +15,7 @@ class RunnerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Runner
-        fields = ("id", "name", "sex", "birth_year", "url")
+        fields = ("id", "name", "birth_year", "url")
         read_only_field = ("id", "url")
 
     def create(self, validated_data):
@@ -34,7 +34,7 @@ class RunnerDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Runner
-        fields = ("id", "name", "sex", "birth_year", "race_results")
+        fields = ("id", "name", "birth_year", "race_results")
         read_only_field = ("id", "race_results")
 
 

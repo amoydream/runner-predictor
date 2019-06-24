@@ -8,7 +8,6 @@ class RunnerFactory(factory.DjangoModelFactory):
 
     name = "Michał Mojek"
     birth_year = 1980
-    sex = "M"
 
 
 class RaceResultFactory(factory.DjangoModelFactory):

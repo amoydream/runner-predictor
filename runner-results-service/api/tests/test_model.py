@@ -6,12 +6,11 @@ from django.core.exceptions import ValidationError
 class TestModels:
     @pytest.mark.parametrize("runner__birth_year", [1980])
     @pytest.mark.parametrize("runner__name", ["Michał Mojek"])
-    @pytest.mark.parametrize("runner__sex", ["M"])
     def test_runner_str_representation(self, runner):
-        assert str(runner) == "Michał Mojek, 1980, M"
+        assert str(runner) == "Michał Mojek, 1980"
 
     @pytest.mark.parametrize("runner__name", ["Michał Mojek"])
-    def test_runner_str_representation_dash(self, runner):
+    def test_runner_str_representation(self, runner):
         with pytest.raises(ValidationError):
             runner.birth_year = "—"
             runner.save()

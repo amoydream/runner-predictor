@@ -9,16 +9,14 @@ logger = logging.getLogger(__name__)
 
 
 class Runner(models.Model):
-    SEX_CHOICES = [("M", "Male"), ("F", "Female")]
     name = models.CharField(max_length=100)
     birth_year = models.IntegerField(validators=[MinValueValidator(1900)])
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES)
 
     class Meta:
         unique_together = ["name", "birth_year"]
 
     def __str__(self):
-        return "{}, {}, {}".format(self.name, self.birth_year, self.sex)
+        return "{}, {}".format(self.name, self.birth_year)
 
 
 def correct_birth_year(sender, instance, **kwargs):
