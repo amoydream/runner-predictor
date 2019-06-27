@@ -4,6 +4,7 @@ ENTER_RESULTS:=docker-compose exec resultapi
 ENTER_RUNNER:=docker-compose exec runnerapi
 ENTER_ITRA:=docker-compose exec itrafetcher
 ENTER_ENDU:=docker-compose exec enduhubfetcher
+ENTER_PREPARATOR:=docker-compose exec datapreparation
 ENTER_ITRA_REDIS:=docker-compose exec itra_redis_cache
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
@@ -33,6 +34,9 @@ enter_itra: ## enter the Django container (want to play freely with manage.py co
 enter_endu: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_ENDU) sh
 
+enter_preparator: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
+	$(ENTER_PREPARATOR) sh
+
 enter_itra_redis: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_ITRA_REDIS) sh
 
@@ -52,6 +56,12 @@ test_endu:
 
 test_runner:
 	$(ENTER_RUNNER) sh -c "pytest -v -s -x"	
+
+test_preparator:
+	$(ENTER_PREPARATOR) sh -c "pytest -v -s -x"	
+
+test_preparator_fast:
+	$(ENTER_PREPARATOR) sh -c "pytest -v -s -x -m fast"	
 
 db_results:
 	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results
