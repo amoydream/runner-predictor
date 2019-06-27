@@ -9,13 +9,16 @@ class RunnerSerializer(serializers.HyperlinkedModelSerializer):
     """Serializer for runner objects"""
 
     birth_year = serializers.IntegerField()
-    url = serializers.HyperlinkedIdentityField(
-        read_only=True, view_name="api:runner-detail"
+    race_results_url = serializers.HyperlinkedIdentityField(
+        read_only=True,
+        view_name="api:race-results-list",
+        lookup_field="pk",
+        lookup_url_kwarg="parent_lookup_runner",
     )
 
     class Meta:
         model = Runner
-        fields = ("id", "name", "birth_year", "url")
+        fields = ("id", "name", "birth_year", "race_results_url")
         read_only_field = ("id", "url")
 
     def create(self, validated_data):

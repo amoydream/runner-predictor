@@ -13,7 +13,7 @@ class RaceFactory(factory.DjangoModelFactory):
     class Meta:
         model = models.Race
 
-    name = "Wielka Prehyba 2018"
+    name = "Wielka Prehyba 2019"
     start_date = "2019-04-27"
     distance = 43.3
     elevation_gain = 1925
@@ -21,6 +21,7 @@ class RaceFactory(factory.DjangoModelFactory):
     itra = 2
     food_point = 3
     time_limit = 9
+    itra_race_id = 27487
 
 
 class RaceResultFactory(factory.DjangoModelFactory):
@@ -30,3 +31,4 @@ class RaceResultFactory(factory.DjangoModelFactory):
     runner_name = "Michał Mojek"
     runner_birth = 1980
     time_result = "6:20:45"
+    sex = "M"

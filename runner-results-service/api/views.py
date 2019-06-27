@@ -18,7 +18,7 @@ class RunnerViewSet(
 
     queryset = Runner.objects.all()
     serializer_class = serializers.RunnerSerializer
-    serializer_detail_class = serializers.RunnerDetailSerializer
+    serializer_detail_class = serializers.RunnerSerializer
     filterset_fields = ("name", "birth_year")
 
     @action(detail=False, methods=["post"])

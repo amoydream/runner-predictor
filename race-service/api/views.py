@@ -23,6 +23,12 @@ class RaceViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
         race.download_from_enduhub()
         return Response("Send to download", status=status.HTTP_201_CREATED)
 
+    @action(detail=False, methods=["post"])
+    def download_itra_data(self, request):
+        race = Race.objects.get(pk=request.data["race_id"])
+        race.download_from_itra()
+        return Response("Send to download", status=status.HTTP_201_CREATED)
+
 
 class RaceResultViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 

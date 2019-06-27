@@ -11,6 +11,9 @@ from api.serializers import (
 )
 from .factories import RaceFactory, RaceResultFactory, RaceGroupFactory
 
+
+from unittest.mock import patch
+
 RACES_URL = reverse("api:race-list")
 RACE_GROUP_URL = reverse("api:racegroup-list")
 
@@ -135,10 +138,21 @@ class CrudRaceResultTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
-    def test_donwload_enduhub(self):
+    @patch("api.models.Race.download_from_enduhub")
+    def test_donwload_enduhub(self, mock):
         race = RaceFactory.create()
         RaceResultFactory.create(race=race)
         endpoint = reverse("api:race-download-enduhub-data")
+        payload = dict(race_id=race.id)
+        res = self.client.post(endpoint, payload)
+        assert res.status_code == status.HTTP_201_CREATED
+
+    @patch("api.models.Race.download_from_itra")
+    def test_donwload_itra(self, mock):
+        race = RaceFactory.create()
+        RaceResultFactory.create(race=race)
+        endpoint = reverse("api:race-download-itra-data")
+        print(endpoint)
         payload = dict(race_id=race.id)
         res = self.client.post(endpoint, payload)
         assert res.status_code == status.HTTP_201_CREATED

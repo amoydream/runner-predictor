@@ -26,6 +26,7 @@ class RaceSerializer(serializers.ModelSerializer):
             "time_limit",
             "elevation_diff",
             "race_results_url",
+            "itra_race_id",
         )
         read_only_field = ("id", "elevation_diff", "race_results_url")
         # read_only_field = ("id", "elevation_diff")
@@ -45,7 +46,14 @@ class RaceGroupSerializer(serializers.ModelSerializer):
 class RaceResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = RaceResult
-        fields = ("id", "race", "runner_name", "runner_birth", "time_result")
+        fields = (
+            "id",
+            "race",
+            "runner_name",
+            "runner_birth",
+            "time_result",
+            "sex",
+        )
         read_only_field = ("id", "race")
         validators = [
             UniqueTogetherValidator(

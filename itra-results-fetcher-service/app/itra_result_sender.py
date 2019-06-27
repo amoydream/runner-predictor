@@ -24,6 +24,7 @@ class ItraResultSender:
             "runner_name": result.name,
             "runner_birth": result.birth_year,
             "time_result": str(result.time),
+            "sex": result.sex[0],
         }
         print(data)
         r = requests.post(race_api_link, json=data)

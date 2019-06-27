@@ -27,6 +27,7 @@ class Race(models.Model):
     elevation_gain = models.PositiveIntegerField(null=True, blank=True)
     elevation_lost = models.PositiveIntegerField(null=True, blank=True)
     itra = models.PositiveIntegerField(null=True, blank=True)
+    itra_race_id = models.PositiveIntegerField(null=True, blank=True)
     food_point = models.PositiveIntegerField(null=True, blank=True)
     time_limit = models.DecimalField(
         max_digits=10, decimal_places=1, null=True, blank=True
@@ -35,6 +36,15 @@ class Race(models.Model):
     def download_from_enduhub(self):
         for race_result in self.race_results.all():
             race_result.download_from_enduhub()
+
+    def download_from_itra(self):
+        payload = {
+            "itra_race_id": self.itra_race_id,
+            "callback_race_id": self.id,
+        }
+
+        r = requests.post("http://itrafetcher:5000/", json=payload)
+        return r.content
 
     class Meta:
         ordering = ["-start_date"]
@@ -53,12 +63,16 @@ class Race(models.Model):
 
 
 class RaceResult(models.Model):
+    SEX_CHOICES = [("m", "Man"), ("w", "Woman")]
     race = models.ForeignKey(
         Race, on_delete=models.CASCADE, related_name="race_results"
     )
     runner_name = models.CharField(max_length=300)
     runner_birth = models.PositiveIntegerField()
     time_result = models.DurationField()
+    sex = models.CharField(
+        max_length=1, choices=SEX_CHOICES, null=True, blank=True
+    )
 
     def download_from_enduhub(self):
         payload = {"name": self.runner_name, "birth": self.runner_birth}
