@@ -7,6 +7,8 @@ class RunnerResultsStat:
         self.results = results
 
     def best_time(self, distance, race_type):
+        if not self.results:
+            return None
         best_time = string_to_timedelta(self.results[0]["result_of_the_race"])
         for result in self.results:
             same_race_type = result["race_type"] == race_type

@@ -94,3 +94,12 @@ def test_runner_stats_best(results):
     best_time_on_ten = runner_stat.best_time(10, "Bieganie")
     assert best_time_on_ten == {"time": "00:47:47", "decimal": 0.796}
 
+
+@pytest.mark.fast
+def test_runner_stats_best_no_results():
+    results = []
+    assert len(results) == 0
+    runner_stat = RunnerResultsStat(results)
+    best_time_on_ten = runner_stat.best_time(10, "Bieganie")
+    assert best_time_on_ten is None
+

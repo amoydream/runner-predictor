@@ -1,4 +1,5 @@
 from .i_preparator import IPreparator
+from .runner_results_stat import RunnerResultsStat
 import time
 import requests
 
@@ -16,10 +17,16 @@ class RaceEventOrientationPreparator(IPreparator):
             race_data = self.prepare_race_data(race, race_result)
             race_results = self.race_results(race)
             for race_result in race_results:
-                del race_result["id"]
                 del race_result["race"]
-                print(self.runner_result(race_result))
-                yield {**race_data, **race_result}
+                runner_results = self.runner_result(race_result)
+                runner_stat = RunnerResultsStat(runner_results)
+                best_time_on_ten = runner_stat.best_time(10, "Bieganie")
+                if best_time_on_ten:
+                    yield {
+                        **race_data,
+                        **race_result,
+                        **{"best_time_on_ten": best_time_on_ten["decimal"]},
+                    }
 
     def race_group(self):
         endpoint = (
