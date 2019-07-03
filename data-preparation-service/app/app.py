@@ -5,6 +5,9 @@ import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
 from sentry_sdk.integrations.celery import CeleryIntegration
 
+from .presist_data import PresistData
+from .race_event_orientation_preparator import RaceEventOrientationPreparator
+
 
 sentry_sdk.init(
     dsn="https://7afe71258cb849db9589b3079ac9f497@sentry.io/1475386",
@@ -21,7 +24,29 @@ flask_app.config.update(
 celery = make_celery(flask_app)
 
 
-@flask_app.route("/")
-def hello():
-    return "Hello data preparation service"
+class DataPreparatorApi(Resource):
+    def post(self):
+        req_json = request.get_json()
+        print(req_json)
+        race_group_id = req_json["race_group_id"]
+        redownload = req_json["redownload"]
+        race_event_preparator = RaceEventOrientationPreparator(race_group_id)
+        prep = PresistData(race_event_preparator)
+        if redownload:
+            prep = PresistData(race_event_preparator, True)
+        data = []
+        for row in prep.get_from_redis():
+            data.append(row)
+        return data
+
+
+api.add_resource(DataPreparatorApi, "/")
+
+# @flask_app.route("/")
+# def hello():
+#     race_group_id = 1
+#     race_event_preparator = RaceEventOrientationPreparator(race_group_id)
+#     prep = PresistData(race_event_preparator)
+
+#     return "Hello data preparation service"
 

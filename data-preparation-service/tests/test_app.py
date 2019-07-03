@@ -1,5 +1,6 @@
 from datetime import timedelta, date
 import pytest
+from unittest.mock import patch
 from app.presist_data import PresistData
 from app.race_event_orientation_preparator import (
     RaceEventOrientationPreparator,
@@ -102,4 +103,15 @@ def test_runner_stats_best_no_results():
     runner_stat = RunnerResultsStat(results)
     best_time_on_ten = runner_stat.best_time(10, "Bieganie")
     assert best_time_on_ten is None
+
+
+## api test
+@pytest.mark.fast
+@patch.object(PresistData, "get_from_redis")
+def test_api(mocked_get_from_redis, client):
+    mocked_get_from_redis.return_value = [1, 2]
+    payload = {"race_group_id": 1, "redownload": 0}
+    rv = client.post("/", json=payload)
+    assert rv.status_code == 200
+    assert rv.json == [1, 2]
 

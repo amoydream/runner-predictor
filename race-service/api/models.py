@@ -1,8 +1,6 @@
 from django.db import models
 import requests
 
-# TODO add RaceGroup model: grouping te same events year by years
-
 
 class RaceGroup(models.Model):
     name = models.CharField(max_length=256)
