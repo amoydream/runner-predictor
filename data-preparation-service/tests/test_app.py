@@ -110,8 +110,7 @@ def test_runner_stats_best_no_results():
 @patch.object(PresistData, "get_from_redis")
 def test_api(mocked_get_from_redis, client):
     mocked_get_from_redis.return_value = [1, 2]
-    payload = {"race_group_id": 1, "redownload": 0}
-    rv = client.post("/", json=payload)
+    rv = client.get("/race_group/1/redownload/0")
     assert rv.status_code == 200
     assert rv.json == [1, 2]
 

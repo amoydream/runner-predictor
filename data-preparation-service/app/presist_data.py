@@ -38,7 +38,9 @@ class PresistData:
         do_loop = True
         while do_loop:
             data = data_redis.scan(
-                cursor=cursor, match="race_group_1:*", count=100
+                cursor=cursor,
+                match=f"race_group_{self.preparator.race_group_id}:*",
+                count=100,
             )
             cursor, keys = data
             print("cursor", cursor)

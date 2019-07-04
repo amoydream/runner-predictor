@@ -25,11 +25,7 @@ celery = make_celery(flask_app)
 
 
 class DataPreparatorApi(Resource):
-    def post(self):
-        req_json = request.get_json()
-        print(req_json)
-        race_group_id = req_json["race_group_id"]
-        redownload = req_json["redownload"]
+    def get(self, race_group_id, redownload):
         race_event_preparator = RaceEventOrientationPreparator(race_group_id)
         prep = PresistData(race_event_preparator)
         if redownload:
@@ -40,7 +36,10 @@ class DataPreparatorApi(Resource):
         return data
 
 
-api.add_resource(DataPreparatorApi, "/")
+api.add_resource(
+    DataPreparatorApi,
+    "/race_group/<int:race_group_id>/redownload/<int:redownload>",
+)
 
 # @flask_app.route("/")
 # def hello():
