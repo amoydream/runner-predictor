@@ -10,6 +10,11 @@
 </head>
 
 <body>
+
+
+
+
+
     <div id="app">
         <input type="text" @input="changeTitle">
         <p>{{title}}</p>
@@ -17,6 +22,25 @@
         <input type="text" v-model="two_way_binding_name">
         <p>{{two_way_binding_name}}</p>
     </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello World!',
+                two_way_binding_name: "test"
+
+            },
+            methods: {
+                changeTitle: function (event) {
+                    this.title = event.target.value;
+                },
+
+            },
+        })
+
+    </script>
+
+
 
     <div id="app2">
         <button @click="increase(2, $event)">click me increase</button>
@@ -29,61 +53,87 @@
         <p>computed_results: {{computed_results}}</p>
         <input type="text" @keyup.enter.space="alertMe">
     </div>
-</body>
-
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            title: 'Hello World!',
-            two_way_binding_name: "test"
-
-        },
-        methods: {
-            changeTitle: function (event) {
-                this.title = event.target.value;
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                counter: 0,
+                x: 0,
+                y: 0
             },
-
-        },
-    })
-
-
-    new Vue({
-        el: '#app2',
-        data: {
-            counter: 0,
-            x: 0,
-            y: 0
-        },
-        watch: {
-            counter: function (value) {
-                var vm = this;
-                setTimeout(function () {
-                    vm.counter = 0;
-                }, 5000)
-            }
-        },
-        computed: {
-            computed_results: function () {
-                return this.counter > 10 ? "Larger that 10" : 'smaller than 10'
-            }
-        },
-        methods: {
-            increase: function (step, event) {
-                this.counter += step;
-                console.log(event);
+            watch: {
+                counter: function (value) {
+                    var vm = this;
+                    setTimeout(function () {
+                        vm.counter = 0;
+                    }, 5000)
+                }
             },
-            updateCoordinates: function (event) {
-                this.x = event.clientX;
-                this.y = event.clientY;
+            computed: {
+                computed_results: function () {
+                    return this.counter > 10 ? "Larger that 10" : 'smaller than 10'
+                }
             },
-            alertMe: function () {
-                alert('alert me')
+            methods: {
+                increase: function (step, event) {
+                    this.counter += step;
+                    console.log(event);
+                },
+                updateCoordinates: function (event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alertMe: function () {
+                    alert('alert me')
+                }
+
             }
+        })
+
+    </script>
+
+    <div id="dynamic_styling">
+        <div class="demo" @click="attachRed =!attachRed" :class="{red: attachRed}"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#dynamic_styling",
+            data: {
+                attachRed: false
+            }
+        })
+    </script>
+
+
+    <style>
+        #dynamic_styling .demo {
+            width: 100px;
+            height: 100px;
+            background: #666;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        #dynamic_styling .red {
+            background: red;
 
         }
-    })
 
-</script>
+        #dynamic_styling .green {
+            background: green;
+
+        }
+
+        #dynamic_styling .blue {
+            background: blue;
+
+        }
+    </style>
+</body>
+
+
 
 </html>
