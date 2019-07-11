@@ -11,7 +11,7 @@
 
 <body>
     <div id="app">
-        <input type="text" v-on:input="changeTitle">
+        <input type="text" @input="changeTitle">
         <p>{{title}}</p>
 
         <input type="text" v-model="two_way_binding_name">
@@ -19,15 +19,15 @@
     </div>
 
     <div id="app2">
-        <button v-on:click="increase(2, $event)">click me increase</button>
-        <button v-on:click="counter--">click me decrease</button>
+        <button @click="increase(2, $event)">click me increase</button>
+        <button @click="counter--">click me decrease</button>
 
         <p>{{counter}}</p>
-        <p v-on:mousemove="updateCoordinates"> Coorditantes {{x}} / {{y}}
-            <span v-on:mousemove.stop="">Dead spot</span>
+        <p @mousemove="updateCoordinates"> Coorditantes {{x}} / {{y}}
+            <span @mousemove.stop="">Dead spot</span>
         </p>
         <p>computed_results: {{computed_results}}</p>
-        <input type="text" v-on:keyup.enter.space="alertMe">
+        <input type="text" @keyup.enter.space="alertMe">
     </div>
 </body>
 
