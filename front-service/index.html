@@ -95,14 +95,17 @@
     <div id="dynamic_styling">
         <div class="demo" @click="attachRed =!attachRed" :class="divClasses"></div>
         <div class="demo"></div>
-        <div class="demo"></div>
+        <div class="demo" :class="color"></div>
+        <hr>
+        <input type="text" v-model="color">
     </div>
 
     <script>
         new Vue({
             el: "#dynamic_styling",
             data: {
-                attachRed: false
+                attachRed: false,
+                color: 'green'
             },
             computed: {
                 divClasses: function () {
