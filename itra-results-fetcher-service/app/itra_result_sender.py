@@ -30,3 +30,10 @@ class ItraResultSender:
         r = requests.post(race_api_link, json=data)
 
         print(r.json())
+
+    def fetch_data_from_enduhub(self):
+        print("fetch_data_from_enduhub")
+        link = "http://resultapi:8000/api/races/download_enduhub_data/"
+        data = {"race_id": self.race_id}
+        r = requests.post(link, json=data)
+

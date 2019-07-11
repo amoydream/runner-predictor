@@ -34,4 +34,5 @@ def fetch_data_from_itra(itra_race_id, callback_race_id):
     fetcher.fetch_results()
     sender = ItraResultSender(fetcher.results, callback_race_id)
     sender.send_to_race_service()
+    sender.fetch_data_from_enduhub()
     return "done"
