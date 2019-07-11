@@ -55,6 +55,14 @@
             x: 0,
             y: 0
         },
+        watch: {
+            counter: function (value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.counter = 0;
+                }, 5000)
+            }
+        },
         computed: {
             computed_results: function () {
                 return this.counter > 10 ? "Larger that 10" : 'smaller than 10'
