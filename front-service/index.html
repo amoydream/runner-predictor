@@ -96,8 +96,11 @@
         <div class="demo" @click="attachRed =!attachRed" :class="divClasses"></div>
         <div class="demo"></div>
         <div class="demo" :class="[color, {red: attachRed}]"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
         <hr>
         <input type="text" v-model="color">
+        <input type="text" v-model="width">
     </div>
 
     <script>
@@ -105,13 +108,20 @@
             el: "#dynamic_styling",
             data: {
                 attachRed: false,
-                color: 'green'
+                color: 'green',
+                width: 100
             },
             computed: {
                 divClasses: function () {
                     return {
                         red: this.attachRed,
                         blue: !this.attachRed
+                    }
+                },
+                myStyle: function () {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + "px"
                     }
                 }
             }
