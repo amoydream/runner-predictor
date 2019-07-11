@@ -93,7 +93,7 @@
     </script>
 
     <div id="dynamic_styling">
-        <div class="demo" @click="attachRed =!attachRed" :class="{red: attachRed}"></div>
+        <div class="demo" @click="attachRed =!attachRed" :class="divClasses"></div>
         <div class="demo"></div>
         <div class="demo"></div>
     </div>
@@ -103,6 +103,14 @@
             el: "#dynamic_styling",
             data: {
                 attachRed: false
+            },
+            computed: {
+                divClasses: function () {
+                    return {
+                        red: this.attachRed,
+                        blue: !this.attachRed
+                    }
+                }
             }
         })
     </script>
