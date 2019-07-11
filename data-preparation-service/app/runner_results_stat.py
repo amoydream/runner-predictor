@@ -1,4 +1,4 @@
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 from string import Template
 
 
@@ -6,17 +6,30 @@ class RunnerResultsStat:
     def __init__(self, results):
         self.results = results
 
-    def best_time(self, distance, race_type):
+    def best_time(self, distance, race_type, border_date=None):
+
         if not self.results:
             return None
-        best_time = string_to_timedelta(self.results[0]["result_of_the_race"])
+        if border_date:
+            border_date = datetime.strptime(border_date, "%Y-%m-%d").date()
+
+        best_time = None
         for result in self.results:
+            race_date = datetime.strptime(
+                result["race_date"], "%Y-%m-%d"
+            ).date()
             same_race_type = result["race_type"] == race_type
             same_disntance = float(result["distance"]) == float(distance)
             if same_race_type and same_disntance:
                 res_time = string_to_timedelta(result["result_of_the_race"])
-                if best_time > res_time:
+
+                if (not best_time or (best_time > res_time)) and (
+                    not border_date or race_date < border_date
+                ):
                     best_time = res_time
+
+        if not best_time:
+            return None
         return_dict = {
             "time": strfdelta(best_time, "%H:%M:%S"),
             "decimal": convert_time_to_hours_decimal(str(best_time)),

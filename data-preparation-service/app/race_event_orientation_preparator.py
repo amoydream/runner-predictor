@@ -20,7 +20,10 @@ class RaceEventOrientationPreparator(IPreparator):
                 del race_result["race"]
                 runner_results = self.runner_result(race_result)
                 runner_stat = RunnerResultsStat(runner_results)
-                best_time_on_ten = runner_stat.best_time(10, "Bieganie")
+
+                best_time_on_ten = runner_stat.best_time(
+                    10, "Bieganie", race["start_date"]
+                )
                 if best_time_on_ten:
                     yield {
                         **race_data,

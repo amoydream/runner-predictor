@@ -14,7 +14,8 @@ class PresistData:
         downloaded = data_redis.get(
             f"race_group_{self.preparator.race_group_id}_downloaded"
         )
-        if force_redownload or not downloaded:
+        print("downloaded", type(downloaded))
+        if force_redownload or not int(downloaded):
             self.save_to_redis()
 
     def save_to_redis(self):

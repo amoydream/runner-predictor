@@ -52,7 +52,7 @@ def results():
             "runner": 36,
             "event_name": "Run 10",
             "distance": "10.0",
-            "race_date": "2010-02-10",
+            "race_date": "2010-03-10",
             "result_of_the_race": "00:49:47",
             "race_type": "Bieganie",
         },
@@ -94,6 +94,14 @@ def test_runner_stats_best(results):
     runner_stat = RunnerResultsStat(results)
     best_time_on_ten = runner_stat.best_time(10, "Bieganie")
     assert best_time_on_ten == {"time": "00:47:47", "decimal": 0.796}
+
+
+@pytest.mark.fast
+def test_runner_stats_best_with_border_date(results):
+    assert len(results) == 4
+    runner_stat = RunnerResultsStat(results)
+    best_time_on_ten = runner_stat.best_time(10, "Bieganie", "2009-06-15")
+    assert best_time_on_ten == {"time": "00:48:47", "decimal": 0.813}
 
 
 @pytest.mark.fast
