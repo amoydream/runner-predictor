@@ -19,13 +19,14 @@
     </div>
 
     <div id="app2">
-        <button v-on:click="increase(2, $event)">click me</button>
-        <button v-on:click="counter++">click me</button>
+        <button v-on:click="increase(2, $event)">click me increase</button>
+        <button v-on:click="counter--">click me decrease</button>
 
-        <p>{{counter * 2 > 10 ? "Larger that 10" : 'smaller than 10'}}</p>
+        <p>{{counter}}</p>
         <p v-on:mousemove="updateCoordinates"> Coorditantes {{x}} / {{y}}
             <span v-on:mousemove.stop="">Dead spot</span>
         </p>
+        <p>computed_results: {{computed_results}}</p>
         <input type="text" v-on:keyup.enter.space="alertMe">
     </div>
 </body>
@@ -53,6 +54,11 @@
             counter: 0,
             x: 0,
             y: 0
+        },
+        computed: {
+            computed_results: function () {
+                return this.counter > 10 ? "Larger that 10" : 'smaller than 10'
+            }
         },
         methods: {
             increase: function (step, event) {
