@@ -24,7 +24,7 @@
 
         <p>{{counter}}</p>
         <p v-on:mousemove="updateCoordinates"> Coorditantes {{x}} / {{y}}
-            <span v-on:mousemove="dummy">Dead spot</span>
+            <span v-on:mousemove.stop="">Dead spot</span>
         </p>
     </div>
 
@@ -47,10 +47,7 @@
                 this.x = event.clientX;
                 this.y = event.clientY;
             },
-            dummy: function (event) {
-                event.stopPropagation();
 
-            }
         }
     })
     new Vue({
