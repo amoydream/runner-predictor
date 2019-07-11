@@ -11,13 +11,12 @@
 
 <body>
     <div id="app">
-
         <input type="text" v-on:input="changeTitle">
         <p>{{title}}</p>
+
+        <input type="text" v-model="two_way_binding_name">
+        <p>{{two_way_binding_name}}</p>
     </div>
-
-
-
 
     <div id="app2">
         <button v-on:click="increase(2, $event)">click me</button>
@@ -29,10 +28,25 @@
         </p>
         <input type="text" v-on:keyup.enter.space="alertMe">
     </div>
-
 </body>
 
 <script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello World!',
+            two_way_binding_name: "test"
+
+        },
+        methods: {
+            changeTitle: function (event) {
+                this.title = event.target.value;
+            },
+
+        },
+    })
+
+
     new Vue({
         el: '#app2',
         data: {
@@ -55,18 +69,7 @@
 
         }
     })
-    new Vue({
-        el: '#app',
-        data: {
-            title: 'Hello World!'
-        },
-        methods: {
-            changeTitle: function (event) {
-                this.title = event.target.value;
-            },
 
-        },
-    })
 </script>
 
 </html>
