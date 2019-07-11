@@ -21,8 +21,9 @@
 
     <div id="app2">
         <button v-on:click="increase(2, $event)">click me</button>
+        <button v-on:click="counter++">click me</button>
 
-        <p>{{counter}}</p>
+        <p>{{counter * 2 > 10 ? "Larger that 10" : 'smaller than 10'}}</p>
         <p v-on:mousemove="updateCoordinates"> Coorditantes {{x}} / {{y}}
             <span v-on:mousemove.stop="">Dead spot</span>
         </p>
