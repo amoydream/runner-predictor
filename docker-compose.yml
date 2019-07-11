@@ -84,11 +84,21 @@ services:
     ports:
       - 5002:5000
   
+ 
+  
   datapreparation_redis:
     image: redis
     expose:
       - 6379      
-
+  
+  # predictor:
+  #   build: ./prediction-service
+  #   command: >
+  #       sh -c "flask run --host=0.0.0.0"
+  #   volumes:
+  #     - ./prediction-service:/flask_code
+  #   ports:
+  #     - 5003:5000    
 
   resultapi:
     build: ./race-service

@@ -5,6 +5,7 @@ ENTER_RUNNER:=docker-compose exec runnerapi
 ENTER_ITRA:=docker-compose exec itrafetcher
 ENTER_ENDU:=docker-compose exec enduhubfetcher
 ENTER_PREPARATOR:=docker-compose exec datapreparation
+ENTER_PREDICTOR:=docker-compose exec predictor
 ENTER_ITRA_REDIS:=docker-compose exec itra_redis_cache
 ENTER_DATA_REDIS:=docker-compose exec datapreparation_redis
 DJANGO_USER_UID:=$(shell id -u)
@@ -66,6 +67,9 @@ test_preparator:
 
 test_preparator_fast:
 	$(ENTER_PREPARATOR) sh -c "pytest -v -s -x -m fast"	
+
+test_predictor:
+	$(ENTER_PREDICTOR) sh -c "pytest -v -s -x"	
 
 db_results:
 	docker-compose exec db_race_results psql --username=postgres_user -d db_race_results
