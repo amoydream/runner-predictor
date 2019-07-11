@@ -95,7 +95,7 @@
     <div id="dynamic_styling">
         <div class="demo" @click="attachRed =!attachRed" :class="divClasses"></div>
         <div class="demo"></div>
-        <div class="demo" :class="color"></div>
+        <div class="demo" :class="[color, {red: attachRed}]"></div>
         <hr>
         <input type="text" v-model="color">
     </div>
