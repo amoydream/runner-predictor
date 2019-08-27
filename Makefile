@@ -8,6 +8,7 @@ ENTER_PREPARATOR:=docker-compose exec datapreparation
 ENTER_PREDICTOR:=docker-compose exec predictor
 ENTER_ITRA_REDIS:=docker-compose exec itra_redis_cache
 ENTER_DATA_REDIS:=docker-compose exec datapreparation_redis
+ENTER_FRONT:=docker-compose exec frontservice
 DJANGO_USER_UID:=$(shell id -u)
 build: ## build necessary stuff for our project to run (docker images)
 	docker-compose build
@@ -44,6 +45,9 @@ enter_itra_redis: ## enter the Django container (want to play freely with manage
 
 enter_data_redis: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
 	$(ENTER_DATA_REDIS) sh
+
+enter_front: ## enter the Django container (want to play freely with manage.py commands? just `make enter` and have fun)
+	$(ENTER_FRONT) sh
 
 
 test:

@@ -167,5 +167,16 @@ services:
     volumes:
       - ./postgres-data-runner-results:/var/lib/postgresql/data              
 
+  frontservice:
+    build: ./front-vue-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - './front-vue-service:/app'
+      - './front-vue-service/node_modules:/app/node_modules'
+    stdin_open: true
+    tty: true
+    restart: on-failure  
+    
 volumes:
   postgres_data:      

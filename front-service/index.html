@@ -153,6 +153,83 @@
 
         }
     </style>
+
+
+    <div id="appvif">
+        <p v-if="show">You see me</p>
+        <p v-else>No eq</p>
+
+        <p>You see me also</p>
+
+        <template v-if="show">
+            <h1>Template tag its not rendered</h1>
+            <p>
+                can hold multiple tags with one if for example
+            </p>
+        </template>
+        <button @click="show = !show">switch</button>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#appvif",
+            data: {
+                show: true
+            }
+        })
+    </script>
+
+
+    <div id="app_loop">
+        <ul>
+            <li v-for="(ingredient, i) in ingredients" :key="i">{{ingredient}} ({{ i }}) </li>
+        </ul>
+
+        <button @click="ingredients.push('spiecs')">add spice</button>
+
+        <template v-for="(ingredient, i) in ingredients">
+            <div>
+                {{ingredient}}
+            </div>
+            <p>{{i}}</p>
+        </template>
+        <hr />
+        <ul>
+            <li v-for="person in persons">{{person.name}}</li>
+        </ul>
+        <ul>
+            <li v-for="person in persons">
+                <span v-for="value in person">{{value}} </span>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="person in persons">
+                <span v-for="(value, key) in person">{{key}}:{{value}} </span>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(person, index_main) in persons">
+                {{index_main}} <span v-for="(value, key, index) in person">{{index}}:{{key}}:{{value}} </span>
+            </li>
+        </ul>
+        <span v-for="n in 10">{{n}} </span>
+
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app_loop",
+            data: {
+                ingredients: ['meat', 'fruit', 'cookies'],
+                persons: [
+                    { name: 'Mojek', age: 27, color: 'red' },
+                    { name: 'Sadlowska', age: 37, color: 'yelow' },
+                ]
+
+            }
+        })
+    </script>
 </body>
 
 
