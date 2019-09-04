@@ -2,10 +2,10 @@
   <div>
     <div class="row">
       <div class="col-sm">
-        <div class="list-group mx-auto mt-4" style="max-width: 500px;">
-          <div class="card">
+        <div class="list-group mx-auto mt-4" style="max-width:800px;">
+          <div class="card mb-2">
             <div class="card-body">
-              <h5 class="card-title">Add Group</h5>
+              <h5 class="card-title">Add Race Group</h5>
               <app-race-group-form :racegroup="new_race_group" @raceGroupSaved="save_group"></app-race-group-form>
             </div>
           </div>
@@ -40,6 +40,15 @@ export default {
       this.race_edited = data.race;
       this.race_group_where_add_race = data.racegroup;
     });
+    this.resource = this.$resource("http://localhost:8001/api/race-group/");
+    this.resource
+      .get()
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        this.racegroups = data;
+      });
   },
   methods: {
     save_group(data) {
@@ -49,6 +58,7 @@ export default {
   },
   data: function() {
     return {
+      resource: {},
       new_race_group: { races: [] },
       race_edited: {},
       race_group_where_add_race: {},
