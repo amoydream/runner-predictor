@@ -1,5 +1,6 @@
 from .i_preparator import IPreparator
 from .runner_results_stat import RunnerResultsStat
+from .runner_results_stat import convert_time_to_hours_decimal
 import time
 import requests
 
@@ -24,11 +25,15 @@ class RaceEventOrientationPreparator(IPreparator):
                 best_time_on_ten = runner_stat.best_time(
                     10, "Bieganie", race["start_date"]
                 )
+                time_result_decimal = convert_time_to_hours_decimal(
+                    race_result["time_result"]
+                )
                 if best_time_on_ten:
                     yield {
                         **race_data,
                         **race_result,
                         **{"best_time_on_ten": best_time_on_ten["decimal"]},
+                        **{"time_result_decimal": time_result_decimal},
                     }
 
     def race_group(self):
