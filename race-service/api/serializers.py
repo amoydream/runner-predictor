@@ -33,14 +33,12 @@ class RaceSerializer(serializers.ModelSerializer):
 
 
 class RaceGroupSerializer(serializers.ModelSerializer):
-    races = serializers.HyperlinkedRelatedField(
-        many=True, view_name="api:race-detail", read_only=True
-    )
+    races = RaceSerializer(many=True, read_only=True)
 
     class Meta:
+
         model = RaceGroup
         fields = ("id", "name", "races")
-        read_only_field = ("id", "races")
 
 
 class RaceResultSerializer(serializers.ModelSerializer):
