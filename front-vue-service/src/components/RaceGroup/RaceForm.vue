@@ -70,20 +70,30 @@ import Datepicker from "vuejs-datepicker";
 export default {
   props: ["race", "racegroup"],
   components: { Datepicker },
+  created() {
+    this.resource = this.$resource(
+      "http://localhost:8001/api/races{/race_id}/"
+    );
+  },
   methods: {
     save_race() {
-      $("#raceFormModal").modal("hide");
+      this.race.race_group = this.racegroup.id;
       if (this.race.id) {
-        console.log("save race");
+        this.resource
+          .update({ race_id: this.race.id }, this.race)
+          .then(response => {
+            $("#raceFormModal").modal("hide");
+          });
       } else {
-        if (this.racegroup.races.length > 0) {
-          var new_id = this.racegroup.races.slice(-1)[0].id + 1;
-        } else {
-          var new_id = 1;
-        }
-        console.log(new_id);
-        this.race.id = new_id;
-        this.racegroup.races.push(this.race);
+        this.resource
+          .save(this.race)
+          .then(response => {
+            return response.json();
+          })
+          .then(race => {
+            this.racegroup.races.push(race);
+            $("#raceFormModal").modal("hide");
+          });
       }
     },
     formatDate(date) {
