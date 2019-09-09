@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app-race-results-modal :results="race_results"></app-race-results-modal>
     <div class="row">
       <div class="col-sm">
         <div class="list-group mx-auto mt-4" style="max-width:800px;">
@@ -25,16 +26,22 @@
 import RaceGroup from "./RaceGroup.vue";
 import RaceForm from "./RaceForm.vue";
 import RaceGroupForm from "./RaceGroupForm.vue";
+import RaceResultsModal from "./RaceResultsModal.vue";
 import { raceEditBus } from "../../main.js";
+import { raceResultBus } from "../../main.js";
 export default {
   components: {
     AppRaceGroup: RaceGroup,
     AppRaceForm: RaceForm,
-    AppRaceGroupForm: RaceGroupForm
+    AppRaceGroupForm: RaceGroupForm,
+    AppRaceResultsModal: RaceResultsModal
   },
   created() {
     raceEditBus.$on("race-to-edit", race => {
       this.race_edited = race;
+    });
+    raceResultBus.$on("race-results-show", race_rasults => {
+      this.race_results = race_rasults;
     });
     raceEditBus.$on("add-race", data => {
       this.race_edited = data.race;
@@ -52,13 +59,21 @@ export default {
   },
   methods: {
     save_group(data) {
-      this.racegroups.push(data);
       this.new_race_group = {};
+      this.resource
+        .save(data)
+        .then(response => {
+          return response.json();
+        })
+        .then(racegroup => {
+          this.racegroups.push(racegroup);
+        });
     }
   },
   data: function() {
     return {
       resource: {},
+      race_results: [],
       new_race_group: { races: [] },
       race_edited: {},
       race_group_where_add_race: {},

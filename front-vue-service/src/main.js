@@ -3,6 +3,7 @@ import VueResource from 'vue-resource'
 import App from './App.vue'
 export const raceGroupBus = new Vue();
 export const raceEditBus = new Vue();
+export const raceResultBus = new Vue();
 
 
 

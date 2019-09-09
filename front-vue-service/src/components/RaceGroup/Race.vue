@@ -21,6 +21,7 @@
         </div>
       </div>
       <small v-if="showicons" class="edit-link">
+        <a @click="show_result_modal()">show results</a> |
         <a @click="show_form_modal()">edit</a>
       </small>
     </a>
@@ -29,16 +30,34 @@
 
 <script>
 import { raceEditBus } from "../../main.js";
+import { raceResultBus } from "../../main.js";
+
 export default {
   props: ["race"],
+  components: {},
   methods: {
     show_form_modal() {
       $("#raceFormModal").modal();
       raceEditBus.$emit("race-to-edit", this.race);
+    },
+    show_result_modal() {
+      this.resource_race_reults
+        .get()
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          $("#raceResultsModal").modal();
+          raceResultBus.$emit("race-results-show", data);
+        });
     }
+  },
+  created() {
+    this.resource_race_reults = this.$resource(this.race.race_results_url);
   },
   data() {
     return {
+      results: [],
       edit: false,
       showicons: false
     };
