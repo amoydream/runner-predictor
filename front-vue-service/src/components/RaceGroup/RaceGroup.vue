@@ -8,12 +8,14 @@
     >
       <div class="d-flex w-100 justify-content-between">
         <h4 class="mb-0" v-if="!edit" @dblclick="edit=true">{{racegroup.name}}</h4>
-        <app-race-group-form v-if="edit" :racegroup="racegroup" @raceGroupSaved="edit=false"></app-race-group-form>
+        <app-race-group-form v-if="edit" :racegroup="racegroup" @raceGroupSaved="updateRaceGroup()"></app-race-group-form>
         <div>
           <small v-if="showicons && !edit">
             <a @click="addRace()">add race</a>
             |
             <a @click="edit=true">edit</a>
+            |
+            <a @click="deleteGroup">delete</a>
           </small>
         </div>
       </div>
@@ -25,7 +27,12 @@
         </div>
       </div>
     </a>
-    <app-race v-for="race in racegroup.races" :race="race" v-bind:key="race.id"></app-race>
+    <app-race
+      v-for="(race, index) in racegroup.races"
+      :race="race"
+      v-bind:key="race.id"
+      @raceDelete="deleteRace(index, race)"
+    ></app-race>
   </div>
 </template>
 
@@ -48,13 +55,36 @@ export default {
         race: new_race,
         racegroup: this.racegroup
       });
+    },
+    updateRaceGroup() {
+      this.edit = false;
+      this.$emit("raceGroupUpdate", this.racegroup);
+    },
+
+    deleteGroup() {
+      if (confirm("Delete race group " + this.racegroup.name + "?")) {
+        this.$emit("raceGroupDelete", this.racegroup);
+      } else {
+        return false;
+      }
+    },
+    deleteRace(index, race) {
+      this.resource_race.delete({ race_id: race.id }).then(response => {
+        this.racegroup.races.splice(index, 1);
+      });
     }
   },
+
   data() {
     return {
       edit: false,
       showicons: false
     };
+  },
+  created() {
+    this.resource_race = this.$resource(
+      "http://localhost:8001/api/races{/race_id}/"
+    );
   }
 };
 </script>

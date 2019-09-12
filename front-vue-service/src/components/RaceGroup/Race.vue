@@ -20,9 +20,10 @@
           <small>itra race id: {{race.itra_race_id}}</small>
         </div>
       </div>
-      <small v-if="showicons" class="edit-link">
+      <small class="edit-link">
         <a @click="show_result_modal()">show results</a> |
-        <a @click="show_form_modal()">edit</a>
+        <a @click="show_form_modal()">edit</a> |
+        <a @click="delete_race()">delete</a>
       </small>
     </a>
   </div>
@@ -50,10 +51,20 @@ export default {
           $("#raceResultsModal").modal();
           raceResultBus.$emit("race-results-show", data);
         });
+    },
+    delete_race() {
+      if (confirm("Delete race " + this.race.name + "?")) {
+        this.$emit("raceDelete", this.race);
+      } else {
+        return false;
+      }
     }
   },
   created() {
     this.resource_race_reults = this.$resource(this.race.race_results_url);
+    this.resource_race = this.$resource(
+      "http://localhost:8001/api/races{/race_id}/"
+    );
   },
   data() {
     return {

@@ -11,9 +11,11 @@
             </div>
           </div>
           <app-race-group
-            v-for="racegroup in racegroups"
+            v-for="(racegroup, index) in racegroups"
             :racegroup="racegroup"
             v-bind:key="racegroup.id"
+            @raceGroupDelete="deleteRaceGroup(index,racegroup)"
+            @raceGroupUpdate="updateRaceGroup(racegroup)"
           ></app-race-group>
           <app-race-form :race="race_edited" :racegroup="race_group_where_add_race"></app-race-form>
         </div>
@@ -47,7 +49,10 @@ export default {
       this.race_edited = data.race;
       this.race_group_where_add_race = data.racegroup;
     });
-    this.resource = this.$resource("http://localhost:8001/api/race-group/");
+
+    this.resource = this.$resource(
+      "http://localhost:8001/api/race-group{/race_group_id}/"
+    );
     this.resource
       .get()
       .then(response => {
@@ -68,6 +73,16 @@ export default {
         .then(racegroup => {
           this.racegroups.push(racegroup);
         });
+    },
+    updateRaceGroup(racegroup) {
+      this.resource
+        .update({ race_group_id: racegroup.id }, racegroup)
+        .then(response => {});
+    },
+    deleteRaceGroup(index, race_group) {
+      this.resource.delete({ race_group_id: race_group.id }).then(response => {
+        this.racegroups.splice(index, 1);
+      });
     }
   },
   data: function() {
@@ -77,72 +92,7 @@ export default {
       new_race_group: { races: [] },
       race_edited: {},
       race_group_where_add_race: {},
-      racegroups: [
-        {
-          id: 1,
-          name: "Wielka Prehyba!!",
-          races: [
-            {
-              id: 3,
-              name: "Wielka Prohyba 2019",
-              start_date: "2019-04-12",
-              results_count: 1120,
-              distance: 43,
-              elevation_gain: 1980,
-              elevation_lost: 1980,
-              food_point: 3,
-              itra: 2,
-              time_limit: 9,
-              itra_race_id: 43397
-            },
-            {
-              id: 4,
-              name: "Wielka Prohyba 2018",
-              start_date: "2018-04-12",
-              results_count: 1920,
-              distance: 43,
-              elevation_gain: 1980,
-              elevation_lost: 1980,
-              food_point: 3,
-              itra: 2,
-              time_limit: 9,
-              itra_race_id: 43397
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: "Wielka Prehyba!!",
-          races: [
-            {
-              id: 1,
-              name: "Wielka Prohyba 2019",
-              start_date: "2019-04-12",
-              results_count: 1120,
-              distance: 43,
-              elevation_gain: 1980,
-              elevation_lost: 1980,
-              food_point: 3,
-              itra: 2,
-              time_limit: 9,
-              itra_race_id: 43397
-            },
-            {
-              id: 2,
-              name: "Wielka Prohyba 2018",
-              start_date: "2018-04-12",
-              results_count: 1920,
-              distance: 43,
-              elevation_gain: 1980,
-              elevation_lost: 1980,
-              itra: 2,
-              food_point: 3,
-              time_limit: 9,
-              itra_race_id: 43397
-            }
-          ]
-        }
-      ]
+      racegroups: []
     };
   }
 };
